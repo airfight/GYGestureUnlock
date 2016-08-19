@@ -62,7 +62,9 @@ class GYCircleView: UIView {
         {
         set {
             _arrow = newValue
-            (self.subviews as NSArray).enumerateObjectsUsingBlock { (circle:GYCircle,0,nil) in
+            (self.subviews as NSArray).enumerateObjectsUsingBlock { (_,_,_) in
+                let circle:GYCircle = GYCircle()
+                circle.isArrow = newValue!
                 
             }
             
