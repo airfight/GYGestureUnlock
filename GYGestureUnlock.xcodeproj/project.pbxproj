@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B7BF33441D66D9E2007846A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33431D66D9E2007846A4 /* AppDelegate.swift */; };
+		B7BF33461D66D9E2007846A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33451D66D9E2007846A4 /* ViewController.swift */; };
+		B7BF33491D66D9E3007846A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BF33471D66D9E3007846A4 /* Main.storyboard */; };
+		B7BF334B1D66D9E3007846A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BF334A1D66D9E3007846A4 /* Assets.xcassets */; };
+		B7BF334E1D66D9E3007846A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BF334C1D66D9E3007846A4 /* LaunchScreen.storyboard */; };
+		B7BF33591D66D9E3007846A4 /* GYGestureUnlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33581D66D9E3007846A4 /* GYGestureUnlockTests.swift */; };
+		B7BF33641D66D9E3007846A4 /* GYGestureUnlockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33631D66D9E3007846A4 /* GYGestureUnlockUITests.swift */; };
+		B7BF33731D66DA32007846A4 /* GYCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33721D66DA32007846A4 /* GYCircle.swift */; };
+		B7BF33751D66DC39007846A4 /* GYCircleConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33741D66DC39007846A4 /* GYCircleConst.swift */; };
+		B7BF33781D66DD69007846A4 /* GYCommon+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33771D66DD69007846A4 /* GYCommon+UIColor.swift */; };
+		B7BF337A1D66FB4C007846A4 /* GYCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33791D66FB4C007846A4 /* GYCircleView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B7BF33551D66D9E3007846A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7BF33381D66D9E2007846A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7BF333F1D66D9E2007846A4;
+			remoteInfo = GYGestureUnlock;
+		};
+		B7BF33601D66D9E3007846A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7BF33381D66D9E2007846A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7BF333F1D66D9E2007846A4;
+			remoteInfo = GYGestureUnlock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B7BF33401D66D9E2007846A4 /* GYGestureUnlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYGestureUnlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7BF33431D66D9E2007846A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B7BF33451D66D9E2007846A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B7BF33481D66D9E3007846A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B7BF334A1D66D9E3007846A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7BF334D1D66D9E3007846A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B7BF334F1D66D9E3007846A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7BF33541D66D9E3007846A4 /* GYGestureUnlockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GYGestureUnlockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7BF33581D66D9E3007846A4 /* GYGestureUnlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYGestureUnlockTests.swift; sourceTree = "<group>"; };
+		B7BF335A1D66D9E3007846A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7BF335F1D66D9E3007846A4 /* GYGestureUnlockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GYGestureUnlockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7BF33631D66D9E3007846A4 /* GYGestureUnlockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYGestureUnlockUITests.swift; sourceTree = "<group>"; };
+		B7BF33651D66D9E3007846A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7BF33721D66DA32007846A4 /* GYCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircle.swift; sourceTree = "<group>"; };
+		B7BF33741D66DC39007846A4 /* GYCircleConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleConst.swift; sourceTree = "<group>"; };
+		B7BF33771D66DD69007846A4 /* GYCommon+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GYCommon+UIColor.swift"; sourceTree = "<group>"; };
+		B7BF33791D66FB4C007846A4 /* GYCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B7BF333D1D66D9E2007846A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7BF33511D66D9E3007846A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7BF335C1D66D9E3007846A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B7BF33371D66D9E2007846A4 = {
+			isa = PBXGroup;
+			children = (
+				B7BF33421D66D9E2007846A4 /* GYGestureUnlock */,
+				B7BF33571D66D9E3007846A4 /* GYGestureUnlockTests */,
+				B7BF33621D66D9E3007846A4 /* GYGestureUnlockUITests */,
+				B7BF33411D66D9E2007846A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B7BF33411D66D9E2007846A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF33401D66D9E2007846A4 /* GYGestureUnlock.app */,
+				B7BF33541D66D9E3007846A4 /* GYGestureUnlockTests.xctest */,
+				B7BF335F1D66D9E3007846A4 /* GYGestureUnlockUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B7BF33421D66D9E2007846A4 /* GYGestureUnlock */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF33711D66D9FE007846A4 /* GYTools */,
+				B7BF33431D66D9E2007846A4 /* AppDelegate.swift */,
+				B7BF33451D66D9E2007846A4 /* ViewController.swift */,
+				B7BF33471D66D9E3007846A4 /* Main.storyboard */,
+				B7BF334A1D66D9E3007846A4 /* Assets.xcassets */,
+				B7BF334C1D66D9E3007846A4 /* LaunchScreen.storyboard */,
+				B7BF334F1D66D9E3007846A4 /* Info.plist */,
+			);
+			path = GYGestureUnlock;
+			sourceTree = "<group>";
+		};
+		B7BF33571D66D9E3007846A4 /* GYGestureUnlockTests */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF33581D66D9E3007846A4 /* GYGestureUnlockTests.swift */,
+				B7BF335A1D66D9E3007846A4 /* Info.plist */,
+			);
+			path = GYGestureUnlockTests;
+			sourceTree = "<group>";
+		};
+		B7BF33621D66D9E3007846A4 /* GYGestureUnlockUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF33631D66D9E3007846A4 /* GYGestureUnlockUITests.swift */,
+				B7BF33651D66D9E3007846A4 /* Info.plist */,
+			);
+			path = GYGestureUnlockUITests;
+			sourceTree = "<group>";
+		};
+		B7BF33711D66D9FE007846A4 /* GYTools */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF33761D66DD3F007846A4 /* Categiors */,
+				B7BF33721D66DA32007846A4 /* GYCircle.swift */,
+				B7BF33791D66FB4C007846A4 /* GYCircleView.swift */,
+				B7BF33741D66DC39007846A4 /* GYCircleConst.swift */,
+			);
+			path = GYTools;
+			sourceTree = "<group>";
+		};
+		B7BF33761D66DD3F007846A4 /* Categiors */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF33771D66DD69007846A4 /* GYCommon+UIColor.swift */,
+			);
+			path = Categiors;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B7BF333F1D66D9E2007846A4 /* GYGestureUnlock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7BF33681D66D9E3007846A4 /* Build configuration list for PBXNativeTarget "GYGestureUnlock" */;
+			buildPhases = (
+				B7BF333C1D66D9E2007846A4 /* Sources */,
+				B7BF333D1D66D9E2007846A4 /* Frameworks */,
+				B7BF333E1D66D9E2007846A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GYGestureUnlock;
+			productName = GYGestureUnlock;
+			productReference = B7BF33401D66D9E2007846A4 /* GYGestureUnlock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B7BF33531D66D9E3007846A4 /* GYGestureUnlockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7BF336B1D66D9E3007846A4 /* Build configuration list for PBXNativeTarget "GYGestureUnlockTests" */;
+			buildPhases = (
+				B7BF33501D66D9E3007846A4 /* Sources */,
+				B7BF33511D66D9E3007846A4 /* Frameworks */,
+				B7BF33521D66D9E3007846A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7BF33561D66D9E3007846A4 /* PBXTargetDependency */,
+			);
+			name = GYGestureUnlockTests;
+			productName = GYGestureUnlockTests;
+			productReference = B7BF33541D66D9E3007846A4 /* GYGestureUnlockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B7BF335E1D66D9E3007846A4 /* GYGestureUnlockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7BF336E1D66D9E3007846A4 /* Build configuration list for PBXNativeTarget "GYGestureUnlockUITests" */;
+			buildPhases = (
+				B7BF335B1D66D9E3007846A4 /* Sources */,
+				B7BF335C1D66D9E3007846A4 /* Frameworks */,
+				B7BF335D1D66D9E3007846A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7BF33611D66D9E3007846A4 /* PBXTargetDependency */,
+			);
+			name = GYGestureUnlockUITests;
+			productName = GYGestureUnlockUITests;
+			productReference = B7BF335F1D66D9E3007846A4 /* GYGestureUnlockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B7BF33381D66D9E2007846A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Giant;
+				TargetAttributes = {
+					B7BF333F1D66D9E2007846A4 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					B7BF33531D66D9E3007846A4 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = B7BF333F1D66D9E2007846A4;
+					};
+					B7BF335E1D66D9E3007846A4 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = B7BF333F1D66D9E2007846A4;
+					};
+				};
+			};
+			buildConfigurationList = B7BF333B1D66D9E2007846A4 /* Build configuration list for PBXProject "GYGestureUnlock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B7BF33371D66D9E2007846A4;
+			productRefGroup = B7BF33411D66D9E2007846A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B7BF333F1D66D9E2007846A4 /* GYGestureUnlock */,
+				B7BF33531D66D9E3007846A4 /* GYGestureUnlockTests */,
+				B7BF335E1D66D9E3007846A4 /* GYGestureUnlockUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B7BF333E1D66D9E2007846A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7BF334E1D66D9E3007846A4 /* LaunchScreen.storyboard in Resources */,
+				B7BF334B1D66D9E3007846A4 /* Assets.xcassets in Resources */,
+				B7BF33491D66D9E3007846A4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7BF33521D66D9E3007846A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7BF335D1D66D9E3007846A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B7BF333C1D66D9E2007846A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7BF33731D66DA32007846A4 /* GYCircle.swift in Sources */,
+				B7BF33461D66D9E2007846A4 /* ViewController.swift in Sources */,
+				B7BF337A1D66FB4C007846A4 /* GYCircleView.swift in Sources */,
+				B7BF33441D66D9E2007846A4 /* AppDelegate.swift in Sources */,
+				B7BF33751D66DC39007846A4 /* GYCircleConst.swift in Sources */,
+				B7BF33781D66DD69007846A4 /* GYCommon+UIColor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7BF33501D66D9E3007846A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7BF33591D66D9E3007846A4 /* GYGestureUnlockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7BF335B1D66D9E3007846A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7BF33641D66D9E3007846A4 /* GYGestureUnlockUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B7BF33561D66D9E3007846A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7BF333F1D66D9E2007846A4 /* GYGestureUnlock */;
+			targetProxy = B7BF33551D66D9E3007846A4 /* PBXContainerItemProxy */;
+		};
+		B7BF33611D66D9E3007846A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7BF333F1D66D9E2007846A4 /* GYGestureUnlock */;
+			targetProxy = B7BF33601D66D9E3007846A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B7BF33471D66D9E3007846A4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7BF33481D66D9E3007846A4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B7BF334C1D66D9E3007846A4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7BF334D1D66D9E3007846A4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B7BF33661D66D9E3007846A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B7BF33671D66D9E3007846A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B7BF33691D66D9E3007846A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GYGestureUnlock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B7BF336A1D66D9E3007846A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GYGestureUnlock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B7BF336C1D66D9E3007846A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GYGestureUnlockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GYGestureUnlock.app/GYGestureUnlock";
+			};
+			name = Debug;
+		};
+		B7BF336D1D66D9E3007846A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GYGestureUnlockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GYGestureUnlock.app/GYGestureUnlock";
+			};
+			name = Release;
+		};
+		B7BF336F1D66D9E3007846A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GYGestureUnlockUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GYGestureUnlock;
+			};
+			name = Debug;
+		};
+		B7BF33701D66D9E3007846A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GYGestureUnlockUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GYGestureUnlock;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B7BF333B1D66D9E2007846A4 /* Build configuration list for PBXProject "GYGestureUnlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7BF33661D66D9E3007846A4 /* Debug */,
+				B7BF33671D66D9E3007846A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7BF33681D66D9E3007846A4 /* Build configuration list for PBXNativeTarget "GYGestureUnlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7BF33691D66D9E3007846A4 /* Debug */,
+				B7BF336A1D66D9E3007846A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B7BF336B1D66D9E3007846A4 /* Build configuration list for PBXNativeTarget "GYGestureUnlockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7BF336C1D66D9E3007846A4 /* Debug */,
+				B7BF336D1D66D9E3007846A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B7BF336E1D66D9E3007846A4 /* Build configuration list for PBXNativeTarget "GYGestureUnlockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7BF336F1D66D9E3007846A4 /* Debug */,
+				B7BF33701D66D9E3007846A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B7BF33381D66D9E2007846A4 /* Project object */;
+}
