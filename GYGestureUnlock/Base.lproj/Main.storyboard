@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kJy-FL-fl2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--手势密码-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="手势密码" id="BYZ-38-t0r" customClass="ViewController" customModule="GYGestureUnlock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,71 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQs-xb-9V1">
+                                <rect key="frame" x="255" y="140" width="90" height="30"/>
+                                <state key="normal" title="设置手势密码"/>
+                                <connections>
+                                    <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Esy-BO-iZO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pG0-Yo-CzY">
+                                <rect key="frame" x="255" y="221" width="90" height="30"/>
+                                <state key="normal" title="登录手势密码"/>
+                                <connections>
+                                    <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RQh-qG-X39"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyZ-zX-wfs">
+                                <rect key="frame" x="255" y="305" width="90" height="30"/>
+                                <state key="normal" title="验证手势密码"/>
+                                <connections>
+                                    <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rsi-RO-lOU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5o-K0-cEM">
+                                <rect key="frame" x="255" y="394" width="90" height="30"/>
+                                <state key="normal" title="修改手势密码"/>
+                                <connections>
+                                    <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Oe-wh-dkB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X5o-K0-cEM" firstAttribute="top" secondItem="pyZ-zX-wfs" secondAttribute="bottom" constant="59" id="2Wv-3O-wIg"/>
+                            <constraint firstItem="pG0-Yo-CzY" firstAttribute="top" secondItem="UQs-xb-9V1" secondAttribute="bottom" constant="51" id="FQj-km-qyE"/>
+                            <constraint firstItem="X5o-K0-cEM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NN2-mP-wpn"/>
+                            <constraint firstItem="UQs-xb-9V1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="76" id="Oq3-g0-eb6"/>
+                            <constraint firstItem="pyZ-zX-wfs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RUi-4o-ZXt"/>
+                            <constraint firstItem="UQs-xb-9V1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UEd-je-rli"/>
+                            <constraint firstItem="pG0-Yo-CzY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W6N-T5-KzL"/>
+                            <constraint firstItem="pyZ-zX-wfs" firstAttribute="top" secondItem="pG0-Yo-CzY" secondAttribute="bottom" constant="54" id="an1-2k-xK7"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sSG-NW-hEX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1337" y="493"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DkB-h3-PdO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kJy-FL-fl2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gda-bU-Q1K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yGK-al-MNw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFD-ga-IV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="1089"/>
         </scene>
     </scenes>
 </document>

@@ -15,6 +15,23 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    @IBAction func btnAction(sender: UIButton) {
+        
+        switch sender.tag {
+        case 1:
+            let gesture = GestureViewController()
+            gesture.type = GestureViewControllerType.Setting
+            
+            navigationController?.pushViewController(gesture, animated: true)
+            
+            break
+        case 2:break
+        case 3:break
+        case 4:break
+        default:
+            break
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

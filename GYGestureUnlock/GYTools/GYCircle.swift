@@ -41,7 +41,7 @@ class GYCircle: UIView {
     /// 圆所处状态
     var _state: CircleState?
     var state:CircleState?
-    {
+        {
         set{
             _state = newValue
             setNeedsDisplay()
@@ -58,7 +58,7 @@ class GYCircle: UIView {
     /// 角度
     var _angle:CGFloat?
     var angle:CGFloat?
-    {
+        {
         set {
             _angle = newValue
             setNeedsDisplay()
@@ -66,13 +66,14 @@ class GYCircle: UIView {
         get {
             return _angle
         }
-   
+        
     }
     
     /// 外环颜色
     var outCircleColor: UIColor?
     {
         var color: UIColor?
+        
         switch self.state! {
         case CircleState.CircleStateNormal:
             color = CircleStateNormalOutsideColor
@@ -139,6 +140,18 @@ class GYCircle: UIView {
         return color
     }
     
+    init() {
+        super.init(frame: CGRectZero)
+        self.backgroundColor = CircleBackgroundColor
+        self.angle = 0
+    }
+    //    
+    //    convenience  init() {
+    //        self.init()
+    //        self.backgroundColor = CircleBackgroundColor
+    //        
+    //    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = CircleBackgroundColor
@@ -180,7 +193,7 @@ class GYCircle: UIView {
         if self.isArrow {
             
             //画三角形箭头
-            
+            drawTrangleWithContext(ctx!, point:CGPointMake(rect.size.width/2, 10) , length: kTrangleLength, color: self.trangleColor!)
         }
         
     }
@@ -198,6 +211,8 @@ class GYCircle: UIView {
         let translateXY = rect.size.width * 0.5
         //平移
         CGContextTranslateCTM(ctx, translateXY, translateXY)
+        //TODO:-
+        angle = 0
         CGContextRotateCTM(ctx, angle!)
         //再平移回来
         CGContextTranslateCTM(ctx, -translateXY, -translateXY)

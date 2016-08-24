@@ -101,7 +101,7 @@ let textColorWarningState = UIColor.colorWithRgba(254, g: 82, b: 92, a: 1)
 let gestureTextBeforeSet = "绘制解锁图案"
 
 /// 设置时，连线个数少，提示文字
-let gestureTextConnectLess = NSString.stringByAppendingFormat("最少连接\(CircleSetCountLeast)点,请重新输入")
+let gestureTextConnectLess = NSString(format: "最少连接%@点,请重新输入",CircleSetCountLeast)
 
 /// 确认图案，提示再次绘制
 let gestureTextDrawAgain = "再次绘制解锁图案"
@@ -129,7 +129,7 @@ class GYCircleConst: NSObject {
      - parameter key:     存储key
      */
     
-    static func saveGesture(gesture: String,key: String) {
+    static func saveGesture(gesture: String?,key: String) {
         NSUserDefaults.standardUserDefaults().setObject(gesture, forKey: key)
         NSUserDefaults.standardUserDefaults().synchronize()
         
