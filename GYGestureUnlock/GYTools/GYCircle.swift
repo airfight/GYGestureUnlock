@@ -39,7 +39,7 @@ enum CircleTye:Int {
 class GYCircle: UIView {
     
     /// 圆所处状态
-    var _state: CircleState?
+    var _state: CircleState!
     var state:CircleState?
         {
         set{
@@ -74,6 +74,11 @@ class GYCircle: UIView {
     {
         var color: UIColor?
         
+        
+        guard (self.state != nil) else {
+            return  CircleStateNormalOutsideColor
+
+        }
         switch self.state! {
         case CircleState.CircleStateNormal:
             color = CircleStateNormalOutsideColor
@@ -96,7 +101,13 @@ class GYCircle: UIView {
     /// 实心圆颜色
     var inCircleColor: UIColor?
     {
+        
         var color: UIColor?
+        
+        guard (self.state != nil) else {
+            return  CircleStateNormalInsideColor
+            
+        }
         switch self.state! {
         case CircleState.CircleStateNormal:
             color = CircleStateNormalInsideColor
@@ -120,6 +131,11 @@ class GYCircle: UIView {
     var trangleColor: UIColor?
     {
         var color: UIColor?
+        
+        guard (self.state != nil) else {
+            return  CircleStateNormalTrangleColor
+            
+        }
         switch self.state! {
         case CircleState.CircleStateNormal:
             color = CircleStateNormalTrangleColor
@@ -143,7 +159,8 @@ class GYCircle: UIView {
     init() {
         super.init(frame: CGRectZero)
         self.backgroundColor = CircleBackgroundColor
-        self.angle = 0
+    
+        self.angle = 5
     }
     //    
     //    convenience  init() {

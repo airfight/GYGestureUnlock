@@ -60,14 +60,14 @@ class GestureViewController: UIViewController {
         }
         
         //进来先清空存储的第一个密码
-        GYCircleConst.saveGesture(nil, key: gestureOneSaveKey)
+        GYCircleConst.saveGesture("", key: gestureOneSaveKey)
     }
     
     
     func setupSameUI(){
         
         //创建导航栏右边按钮
-        //        self.navigationItem.rightBarButtonItem =
+        self.navigationItem.rightBarButtonItem = itemWithTile("重设", target: self, action: #selector(GestureViewController.didClickBtn(_:)), tag: buttonTag.Rest.rawValue)
         
         //解锁界面
         let lockView = GYCircleView()
@@ -84,6 +84,50 @@ class GestureViewController: UIViewController {
         
     }
     
+    //MARK:- 创建UIBarButtonItem
+    
+    func itemWithTile(title: NSString,target: AnyObject,action: Selector,tag: NSInteger) -> UIBarButtonItem{
+        
+        let button = UIButton(type: UIButtonType.Custom)
+        button.setTitle(title as String, forState: UIControlState.Normal)
+        button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+        button.tag = tag
+        button.contentHorizontalAlignment = .Right
+        button.hidden = true
+        self.resetBtn = button
+        
+        return UIBarButtonItem(customView: button)
+        
+        
+        
+    }
+    //    
+    //    func didClickBtn(sender: UIButton) {
+    //        
+    //        
+    //        switch sender.tag {
+    //        case buttonTag.Rest.rawValue:
+    //            
+    //            self.resetBtn?.hidden = true
+    //            
+    //            self.infoViewDeselectedSubviews()
+    //            
+    //            self.msgLabel?.showNormalMag(gestureTextBeforeSet)
+    //            
+    //            GYCircleConst.saveGesture("", key: gestureOneSaveKey)
+    //            
+    //            break
+    //        case buttonTag.Manager:
+    //            print("点击了管理手势密码")
+    //            break
+    //            
+    //        default:
+    //            <#code#>
+    //        }
+    //        
+    //    }
+    //    
     func setupDifferentUI() {
         
         switch self.type! {
@@ -93,8 +137,7 @@ class GestureViewController: UIViewController {
         case GestureViewControllerType.Login:
             setupSubViewsLoginVc()
             break
-        default:
-            break
+            
         }
     }
     
@@ -107,7 +150,8 @@ class GestureViewController: UIViewController {
         
         self.msgLabel?.showNormalMag(gestureTextBeforeSet)
         
-        let infoView = GYCircleInfoView(frame: CGRect(x: 0, y: 0, width: CircleRadio * 2 * 0.6, height: CircleRadio * 2 * 0.6))
+        let infoView = GYCircleInfoView()
+        infoView.frame = CGRect(x: 0, y: 0, width: CircleRadius * 2 * 0.6, height: CircleRadius * 2 * 0.6)
         
         infoView.center = CGPoint(x: kScreenW/2, y: CGRectGetMinY(self.msgLabel!.frame) - CGRectGetHeight(infoView.frame)/2 - 10)
         self.infoView = infoView
@@ -135,8 +179,6 @@ class GestureViewController: UIViewController {
         let rightBtn = UIButton(type: UIButtonType.Custom)
         
         creatButton(rightBtn, frame: CGRectMake(kScreenW/2 - CircleViewEdgeMargin - 20, kScreenH - 60, kScreenW/2, 20), titlr: "登录其他账户", alignment: UIControlContentHorizontalAlignment.Right, tag: buttonTag.Forget.rawValue)
-        
-        
         
         
         
@@ -198,7 +240,7 @@ extension GestureViewController: GYCircleViewDelegate {
     
     func circleViewConnectCirclesLessThanNeedWithGesture(view: GYCircleView, type: CircleViewType, gesture: String) {
         
-        let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey) as NSString
+        let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey)! as NSString
         
         //看是否存在第一个密码
         if gestureOne.length == 0 {
@@ -225,7 +267,7 @@ extension GestureViewController: GYCircleViewDelegate {
         
     }
     
-   
+    
     
     func circleViewdidCompleteSetSecondGesture(view: GYCircleView, type: CircleViewType, gesture: String, result: Bool) {
         
@@ -248,7 +290,7 @@ extension GestureViewController: GYCircleViewDelegate {
     func circleViewdidCompleteLoginGesture(view: GYCircleView, type: CircleViewType, gesture: String, result: Bool) {
         
         
-     //此时的type有两种情况 Login or verify
+        //此时的type有两种情况 Login or verify
         if type == CircleViewType.CircleViewTypeLogin {
             if result {
                 print("登录成功!")

@@ -9,9 +9,10 @@
 import UIKit
 
 class GYCircleInfoView: UIView {
-
-    convenience init() {
-        self.init()
+    
+    init() {
+        super.init(frame: CGRectZero)
+        lockViewPrepare()
         
     }
     
@@ -29,7 +30,7 @@ class GYCircleInfoView: UIView {
         
         for _ in 0..<9 {
             
-            let circl = GYCircle(frame: CGRectZero)
+            let circl = GYCircle()
             circl.type = CircleTye.CircleTypeInfo
             
             addSubview(circl)
@@ -41,7 +42,7 @@ class GYCircleInfoView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let itemViewWH = CircleRadius * 2
+        let itemViewWH = CircleInfoRadius * 2
         let marginValue = (self.frame.size.width - 3 * itemViewWH) / 3.0
         (self.subviews as NSArray).enumerateObjectsUsingBlock { (object, idx, stop) in
             let row: NSInteger = idx % 3;
