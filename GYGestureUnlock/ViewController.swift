@@ -12,7 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.title = "手势解锁"
+     
     }
 
     @IBAction func btnAction(sender: UIButton) {
@@ -25,9 +26,15 @@ class ViewController: UIViewController {
             navigationController?.pushViewController(gesture, animated: true)
             
             break
-        case 2:break
-        case 3:break
-        case 4:break
+        case 2:
+            
+            break
+        case 3:
+            
+            break
+        case 4:
+            
+            break
         default:
             break
         }

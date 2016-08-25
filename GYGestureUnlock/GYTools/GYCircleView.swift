@@ -92,6 +92,7 @@ class GYCircleView: UIView {
         
         super.init(frame: CGRectZero)
         lockViewPrepare()
+        circleSet = NSMutableArray()
         //        super.init()
     }
     //    convenience init() {
@@ -280,7 +281,7 @@ class GYCircleView: UIView {
         }
         
         //数组中最后一个对象的处理
-        circleSetLastObjectWithState(CircleState.CircleStateSelected)
+        circleSetLastObjectWithState(CircleState.CircleStateLastOneSelected)
         setNeedsDisplay()
         
         
@@ -311,6 +312,10 @@ class GYCircleView: UIView {
             
         }
         
+        guard (self.circleSet != nil) else {
+            return
+        }
+        
         (self.circleSet! as NSArray).enumerateObjectsUsingBlock { (circle, idx, stop) in
             
             let circlel = circle as! GYCircle
@@ -331,6 +336,9 @@ class GYCircleView: UIView {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.hasClean = false
+        guard self.circleSet != nil else {
+            return
+        }
         let gesture = self.getGestureResultFromCircleSet(self.circleSet!)
         
         let length = gesture.length
@@ -348,8 +356,7 @@ class GYCircleView: UIView {
             gestureEndByTypeLoginWithGesture(gesture, length: CGFloat(length))
         case CircleViewType.CircleViewTypeVerify:
             gestureEndByTypeVerifyWithGesture(gesture, length: CGFloat(length))
-        default:
-            gestureEndByTypeSettingWithGesture(gesture, length: CGFloat(length))
+     
         }
         
         //手势结束后是否错误回显重绘，取决于是否延时清空数组和状态复原
@@ -425,6 +432,9 @@ class GYCircleView: UIView {
     
     //MARK:- 对数组最后一个对象的处理
     func circleSetLastObjectWithState(state: CircleState) {
+        guard (self.circleSet != nil)  else {
+            return
+        }
         (self.circleSet?.lastObject as! GYCircle).state = state
     }
     
@@ -441,9 +451,9 @@ class GYCircleView: UIView {
             //2.改变状态为error
             changeCircleInCircleSetWithState(CircleState.CircleStateError)
         } else { //>= 4个
-            let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey) as NSString
+            let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey)! as NSString
             
-            if gestureOne.length < CircleSetCountLeast { //接收并存储第一个密码
+            if gestureOne.length < CircleSetCountLeast  { //接收并存储第一个密码
                 
                 // 记录第一次密码
                 GYCircleConst.saveGesture(gesture as String, key: gestureOneSaveKey)
@@ -473,7 +483,7 @@ class GYCircleView: UIView {
     //MARK: - 解锁类型:登陆  手势路径的处理
     func gestureEndByTypeLoginWithGesture(gesture: NSString, length:CGFloat) {
         
-        let password = GYCircleConst.getGestureWithKey(gestureFinalSaveKey) as NSString
+        let password = GYCircleConst.getGestureWithKey(gestureFinalSaveKey)! as NSString
         
         let  equal = gesture.isEqual(password)
         

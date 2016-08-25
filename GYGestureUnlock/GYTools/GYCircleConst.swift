@@ -140,9 +140,9 @@ class GYCircleConst: NSObject {
      
      - parameter key: 字符串对象
      */
-    static func getGestureWithKey(key: String) -> String{
+    static func getGestureWithKey(key: String) -> String?{
         
-        return NSUserDefaults.standardUserDefaults().objectForKey(key) as! String
+        return NSUserDefaults.standardUserDefaults().objectForKey(key) as? String ?? ""
     }
     
     
