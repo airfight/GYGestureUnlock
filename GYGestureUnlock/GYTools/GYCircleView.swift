@@ -65,7 +65,7 @@ class GYCircleView: UIView {
             (self.subviews as NSArray).enumerateObjectsUsingBlock { (_,_,_) in
                 let circle:GYCircle = GYCircle()
                 circle.isArrow = newValue!
-              
+                
                 
             }
             
@@ -135,12 +135,15 @@ class GYCircleView: UIView {
             let circle = GYCircle()
             circle.type = CircleTye.CircleTypeGesture
             circle.isArrow = self.arrow!
-         
+            
             addSubview(circle)
             
         }
     }
     
+    /**
+     addSubview时会调用 排版子View
+     */
     override func layoutSubviews() {
         super.layoutSubviews()
         let itemViewWH = CircleRadius * 2
@@ -356,7 +359,7 @@ class GYCircleView: UIView {
             gestureEndByTypeLoginWithGesture(gesture, length: CGFloat(length))
         case CircleViewType.CircleViewTypeVerify:
             gestureEndByTypeVerifyWithGesture(gesture, length: CGFloat(length))
-     
+            
         }
         
         //手势结束后是否错误回显重绘，取决于是否延时清空数组和状态复原
@@ -387,7 +390,9 @@ class GYCircleView: UIView {
          *  保证线程安全
          */
         synchronized(self) {
-            self.hasClean = true
+            guard self.hasClean != nil else {
+                return
+            }
             if !self.hasClean! {
                 
                 //手势完毕、选中的圆回归普通状态
