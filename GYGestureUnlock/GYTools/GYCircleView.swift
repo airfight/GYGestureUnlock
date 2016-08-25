@@ -297,7 +297,7 @@ class GYCircleView: UIView {
         let point = touch?.locationInView(self)
         (subviews as NSArray).enumerateObjectsUsingBlock { (circle, idx, stop) in
             
-            
+            //
             let cir = circle as! GYCircle
             if CGRectContainsPoint(cir.frame, point!) {
                 
