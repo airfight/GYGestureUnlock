@@ -457,21 +457,20 @@ class GYCircleView: UIView {
             //2.改变状态为error
             changeCircleInCircleSetWithState(CircleState.CircleStateError)
         } else { //>= 4个
-//            guard (GYCircleConst.getGestureWithKey(gestureOneSaveKey) != nil) else {
-//                return
-//            }
+       
+            let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey)
             
-            
-            if GYCircleConst.getGestureWithKey(gestureOneSaveKey) != nil  { //接收并存储第一个密码
-                
+            if gestureOne == nil {//未输入过少于4的手势
                 // 记录第一次密码
                 GYCircleConst.saveGesture(gesture as String, key: gestureOneSaveKey)
                 
                 self.delegate?.circleViewdidCompleteSetFirstGesture(self, type: self.type!, gesture:gesture as String )
+            } else if  (gestureOne! as NSString).length < CircleSetCountLeast {
+                // 记录第一次密码
+                GYCircleConst.saveGesture(gesture as String, key: gestureOneSaveKey)
                 
-                
+                self.delegate?.circleViewdidCompleteSetFirstGesture(self, type: self.type!, gesture:gesture as String )
             } else { //接收第二个密码并与第一个密码匹配，一致后存储起来
-             
                 let equal = gesture.isEqual(GYCircleConst.getGestureWithKey(gestureOneSaveKey)) //匹配两次手势
                 
                 //通知代理
