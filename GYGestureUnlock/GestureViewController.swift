@@ -60,7 +60,7 @@ class GestureViewController: UIViewController {
         }
         
         //进来先清空存储的第一个密码
-        GYCircleConst.saveGesture("", key: gestureOneSaveKey)
+        GYCircleConst.saveGesture(nil, key: gestureOneSaveKey)
     }
     
     
@@ -115,7 +115,7 @@ class GestureViewController: UIViewController {
     //            
     //            self.msgLabel?.showNormalMag(gestureTextBeforeSet)
     //            
-    //            GYCircleConst.saveGesture("", key: gestureOneSaveKey)
+    //            GYCircleConst.saveGesture(nil, key: gestureOneSaveKey)
     //            
     //            break
     //        case buttonTag.Manager:
@@ -240,10 +240,17 @@ extension GestureViewController: GYCircleViewDelegate {
     
     func circleViewConnectCirclesLessThanNeedWithGesture(view: GYCircleView, type: CircleViewType, gesture: String) {
         
+        //swift 很奇葩
+        guard GYCircleConst.getGestureWithKey(gestureOneSaveKey) != nil else {
+            
+            self.msgLabel?.showWarnMsgAndShake("最少连接\(CircleSetCountLeast)点,请重新输入")
+            return
+        }
+        
         let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey)! as NSString
         
         //看是否存在第一个密码
-        if gestureOne.length == 0 {
+        if gestureOne.length > 0 {
             self.resetBtn?.hidden = false
             self.msgLabel?.showWarnMsgAndShake(gestureTextDrawAgainError)
         } else {

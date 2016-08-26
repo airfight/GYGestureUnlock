@@ -160,7 +160,7 @@ class GYCircle: UIView {
         super.init(frame: CGRectZero)
         self.backgroundColor = CircleBackgroundColor
     
-        self.angle = 5
+//        self.angle = 5
     }
     //    
     //    convenience  init() {
@@ -287,7 +287,8 @@ class GYCircle: UIView {
     private func drawTrangleWithContext(ctx: CGContextRef,point: CGPoint,length: CGFloat,color: UIColor) {
         
         
-        let trianglePathM = CGPathCreateMutable()
+        let trianglePathM = CGPathCreateMutable() as CGMutablePathRef
+        
         CGPathMoveToPoint(trianglePathM, nil, point.x , point.y)
         CGPathAddLineToPoint(trianglePathM, nil, point.x - length/2, point.y + length/2)
         CGPathAddLineToPoint(trianglePathM, nil, point.x + length/2, point.y + length/2)
@@ -297,6 +298,7 @@ class GYCircle: UIView {
         CGContextFillPath(ctx)
         //
         CGContextStrokePath(ctx)
+       
         //        CGPathRelease(trianglePathM)
         
     }

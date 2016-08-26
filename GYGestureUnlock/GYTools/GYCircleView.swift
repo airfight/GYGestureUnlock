@@ -62,9 +62,9 @@ class GYCircleView: UIView {
         {
         set {
             _arrow = newValue
-            (self.subviews as NSArray).enumerateObjectsUsingBlock { (_,_,_) in
-                let circle:GYCircle = GYCircle()
-                circle.isArrow = newValue!
+            (self.subviews as NSArray).enumerateObjectsUsingBlock { (circle,_,_) in
+                let circler = circle as! GYCircle
+                circler.isArrow = newValue!
                 
                 
             }
@@ -158,8 +158,8 @@ class GYCircleView: UIView {
             let frame = CGRect(x: x, y: y, width: itemViewWH, height: itemViewWH)
             
             //设置tag->用于记录密码的单元
-            (object as! UIView).tag = idx + 1
-            (object as! UIView).frame = frame
+            (object as! GYCircle).tag = idx + 1
+            (object as! GYCircle).frame = frame
         }
         
         
@@ -242,7 +242,7 @@ class GYCircleView: UIView {
         //设置绘图的属性
         CGContextSetLineWidth(ctx, CircleConnectLineWidth)
         
-        //线条贪色
+        //线条颜色
         color.set()
         
         //渲染路径
@@ -302,7 +302,8 @@ class GYCircleView: UIView {
             if CGRectContainsPoint(cir.frame, point!) {
                 
                 if ((self.circleSet?.containsObject(cir)) != nil) {
-                    
+                     self.circleSet?.addObject(cir)
+                     self.calAngleAndconnectTheJumpedCircle()
                 } else {
                     self.circleSet?.addObject(cir)
                     
@@ -437,7 +438,7 @@ class GYCircleView: UIView {
     
     //MARK:- 对数组最后一个对象的处理
     func circleSetLastObjectWithState(state: CircleState) {
-        guard (self.circleSet != nil)  else {
+        guard (self.circleSet?.lastObject != nil)  else {
             return
         }
         (self.circleSet?.lastObject as! GYCircle).state = state
@@ -456,9 +457,12 @@ class GYCircleView: UIView {
             //2.改变状态为error
             changeCircleInCircleSetWithState(CircleState.CircleStateError)
         } else { //>= 4个
-            let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey)! as NSString
+//            guard (GYCircleConst.getGestureWithKey(gestureOneSaveKey) != nil) else {
+//                return
+//            }
             
-            if gestureOne.length < CircleSetCountLeast  { //接收并存储第一个密码
+            
+            if GYCircleConst.getGestureWithKey(gestureOneSaveKey) != nil  { //接收并存储第一个密码
                 
                 // 记录第一次密码
                 GYCircleConst.saveGesture(gesture as String, key: gestureOneSaveKey)
@@ -467,6 +471,7 @@ class GYCircleView: UIView {
                 
                 
             } else { //接收第二个密码并与第一个密码匹配，一致后存储起来
+             
                 let equal = gesture.isEqual(GYCircleConst.getGestureWithKey(gestureOneSaveKey)) //匹配两次手势
                 
                 //通知代理
@@ -596,6 +601,10 @@ class GYCircleView: UIView {
             if CGRectContainsPoint(circle.frame, point) {
                 centerCircle = circle
             }
+        }
+        
+        guard centerCircle != nil else {
+            return nil
         }
         
         if !(self.circleSet?.containsObject(centerCircle!))! {

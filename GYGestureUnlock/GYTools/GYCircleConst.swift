@@ -142,7 +142,7 @@ class GYCircleConst: NSObject {
      */
     static func getGestureWithKey(key: String) -> String?{
         
-        return NSUserDefaults.standardUserDefaults().objectForKey(key) as? String ?? ""
+        return NSUserDefaults.standardUserDefaults().objectForKey(key) as? String ?? nil
     }
     
     
