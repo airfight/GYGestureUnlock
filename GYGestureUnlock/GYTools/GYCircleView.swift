@@ -17,7 +17,7 @@ enum CircleViewType: Int {
     case CircleViewTypeVerify
 }
 
- protocol GYCircleViewDelegate {
+protocol GYCircleViewDelegate {
     
     /**
      *  连线个数少于4个时，通知代理
@@ -309,15 +309,15 @@ class GYCircleView: UIView {
                 
                 //此处脑残了 self.circleSet?.containsObject(cir) != nil
                 // 判断数组中是否包含此view 包含不添加 不包含则添加
-                if !self.circleSet!.containsObject(cir) {
-                    print("添加子View的tag:\(cir.tag)")
-                    self.circleSet?.addObject(cir)
-                    self.calAngleAndconnectTheJumpedCircle()
-                } else {
+                if self.circleSet!.containsObject(cir) {
+                    //                    print("添加子View的tag:\(cir.tag)")
                     //                    self.circleSet?.addObject(cir)
-                    
-                    //move过程中的连线(包含跳跃连线的处理)
                     //                    self.calAngleAndconnectTheJumpedCircle()
+                } else {
+                    self.circleSet?.addObject(cir)
+                    
+                    // move过程中的连线(包含跳跃连线的处理)
+                    self.calAngleAndconnectTheJumpedCircle()
                 }
             } else {
                 self.currentPoint = point
@@ -578,8 +578,11 @@ class GYCircleView: UIView {
         
         if centerCircle != nil {
             //把跳过的圆加到数组中，他的位置是倒数第二个
-            if !((self.circleSet?.containsObject(centerCircle!)) != nil) {
+            if !(self.circleSet!.containsObject(centerCircle!)) {
+                //插入数组中
                 self.circleSet?.insertObject(centerCircle!, atIndex: (self.circleSet?.count)! - 1)
+                //指定此圆的角度与上一个角度相同。
+                centerCircle?.angle = lastTwo.angle
                 
             }
         }
@@ -599,10 +602,16 @@ class GYCircleView: UIView {
         
     }
     //MARK:- 给一个点，判断这个点是否被圆包含，如果包含就返回当前圆，如果不包含返回的是nil
-    
+    /**
+     判断两个点之间的中心点是否在圆上
+     
+     - parameter point: z中心点坐标
+     
+     - returns: 在就返回这个圆 不在返回nil
+     */
     func enumCircleSetToFindWhichSubviewContainTheCenterPoint(point: CGPoint) ->  GYCircle? {
         
-        var  centerCircle: GYCircle?
+        var centerCircle: GYCircle?
         
         for circle: GYCircle in subviews as! [GYCircle] {
             if CGRectContainsPoint(circle.frame, point) {
