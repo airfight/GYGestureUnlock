@@ -166,7 +166,7 @@ class GestureViewController: UIViewController {
         
         //头像
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
-        imageView.center = CGPoint(x: kScreenW/2, y: kScreenH/2)
+        imageView.center = CGPoint(x: kScreenW/2, y: kScreenH/5)
         imageView.image = UIImage(named: "head")
         view.addSubview(imageView)
         
@@ -285,7 +285,7 @@ extension GestureViewController: GYCircleViewDelegate {
             
             self.msgLabel?.showWarnMsg(gestureTextSetSuccess)
             GYCircleConst.saveGesture(gesture, key: gestureFinalSaveKey)
-            navigationController?.popViewControllerAnimated(true)
+            navigationController?.popToRootViewControllerAnimated(true)
         } else {
             print("两次手势不匹配")
             self.msgLabel?.showWarnMsgAndShake(gestureTextDrawAgainError)

@@ -22,6 +22,7 @@
 		B7BF33751D66DC39007846A4 /* GYCircleConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33741D66DC39007846A4 /* GYCircleConst.swift */; };
 		B7BF33781D66DD69007846A4 /* GYCommon+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33771D66DD69007846A4 /* GYCommon+UIColor.swift */; };
 		B7BF337A1D66FB4C007846A4 /* GYCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF33791D66FB4C007846A4 /* GYCircleView.swift */; };
+		B7F8D24B1D741C79009EAB59 /* GestureVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8D24A1D741C79009EAB59 /* GestureVerifyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +46,7 @@
 		B75A87421D6D37DD007004EC /* CALayer+Anim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Anim.swift"; sourceTree = "<group>"; };
 		B75A87481D6D3C26007004EC /* GYCircleInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleInfoView.swift; sourceTree = "<group>"; };
 		B75A874A1D6D3F5F007004EC /* GYLockLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYLockLabel.swift; sourceTree = "<group>"; };
-		B75A874C1D6D479E007004EC /* GestureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureViewController.swift; sourceTree = "<group>"; };
+		B75A874C1D6D479E007004EC /* GestureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GestureViewController.swift; path = ../../GestureViewController.swift; sourceTree = "<group>"; };
 		B7BF33401D66D9E2007846A4 /* GYGestureUnlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYGestureUnlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BF33431D66D9E2007846A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7BF33451D66D9E2007846A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		B7BF33741D66DC39007846A4 /* GYCircleConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleConst.swift; sourceTree = "<group>"; };
 		B7BF33771D66DD69007846A4 /* GYCommon+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GYCommon+UIColor.swift"; sourceTree = "<group>"; };
 		B7BF33791D66FB4C007846A4 /* GYCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCircleView.swift; sourceTree = "<group>"; };
+		B7F8D24A1D741C79009EAB59 /* GestureVerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureVerifyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +127,6 @@
 				B7BF33711D66D9FE007846A4 /* GYTools */,
 				B7BF33431D66D9E2007846A4 /* AppDelegate.swift */,
 				B7BF33451D66D9E2007846A4 /* ViewController.swift */,
-				B75A874C1D6D479E007004EC /* GestureViewController.swift */,
 				B7BF33471D66D9E3007846A4 /* Main.storyboard */,
 				B7BF334A1D66D9E3007846A4 /* Assets.xcassets */,
 				B7BF334C1D66D9E3007846A4 /* LaunchScreen.storyboard */,
@@ -155,6 +156,7 @@
 		B7BF33711D66D9FE007846A4 /* GYTools */ = {
 			isa = PBXGroup;
 			children = (
+				B7F8D2491D741C5E009EAB59 /* ViewController */,
 				B75A87471D6D3C1F007004EC /* View */,
 				B7BF33761D66DD3F007846A4 /* Categiors */,
 				B7BF33721D66DA32007846A4 /* GYCircle.swift */,
@@ -171,6 +173,15 @@
 				B75A87421D6D37DD007004EC /* CALayer+Anim.swift */,
 			);
 			path = Categiors;
+			sourceTree = "<group>";
+		};
+		B7F8D2491D741C5E009EAB59 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B75A874C1D6D479E007004EC /* GestureViewController.swift */,
+				B7F8D24A1D741C79009EAB59 /* GestureVerifyViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +325,7 @@
 				B7BF33441D66D9E2007846A4 /* AppDelegate.swift in Sources */,
 				B7BF33751D66DC39007846A4 /* GYCircleConst.swift in Sources */,
 				B75A874D1D6D479E007004EC /* GestureViewController.swift in Sources */,
+				B7F8D24B1D741C79009EAB59 /* GestureVerifyViewController.swift in Sources */,
 				B7BF33781D66DD69007846A4 /* GYCommon+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

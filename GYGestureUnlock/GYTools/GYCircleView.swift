@@ -17,7 +17,7 @@ enum CircleViewType: Int {
     case CircleViewTypeVerify
 }
 
-protocol GYCircleViewDelegate {
+ protocol GYCircleViewDelegate {
     
     /**
      *  连线个数少于4个时，通知代理
