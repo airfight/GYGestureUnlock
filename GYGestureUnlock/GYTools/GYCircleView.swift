@@ -275,11 +275,15 @@ class GYCircleView: UIView {
             
             
             let cir = circle as! GYCircle
+            
             if CGRectContainsPoint(cir.frame, point!) {
+                
                 
                 cir.state = CircleState.CircleStateSelected
                 self.circleSet?.addObject(cir)
+                print("添加子View的tag:\(cir.tag)")
             }
+            
             
         }
         
@@ -294,6 +298,7 @@ class GYCircleView: UIView {
         currentPoint = CGPointZero
         let touch = (touches as NSSet).anyObject()
         
+        //获取手势所在的点坐标
         let point = touch?.locationInView(self)
         (subviews as NSArray).enumerateObjectsUsingBlock { (circle, idx, stop) in
             
@@ -301,14 +306,16 @@ class GYCircleView: UIView {
             let cir = circle as! GYCircle
             if CGRectContainsPoint(cir.frame, point!) {
                 
-                if ((self.circleSet?.containsObject(cir)) != nil) {
-                     self.circleSet?.addObject(cir)
-                     self.calAngleAndconnectTheJumpedCircle()
-                } else {
+                //此处脑残了 self.circleSet?.containsObject(cir) != nil
+                if !self.circleSet!.containsObject(cir) {
+                    print("添加子View的tag:\(cir.tag)")
                     self.circleSet?.addObject(cir)
+                    self.calAngleAndconnectTheJumpedCircle()
+                } else {
+                    //                    self.circleSet?.addObject(cir)
                     
                     //move过程中的连线(包含跳跃连线的处理)
-                    self.calAngleAndconnectTheJumpedCircle()
+                    //                    self.calAngleAndconnectTheJumpedCircle()
                 }
             } else {
                 self.currentPoint = point
@@ -445,7 +452,6 @@ class GYCircleView: UIView {
     }
     
     //MARK: - 解锁类型: 设置 手势路径处理
-    
     func gestureEndByTypeSettingWithGesture(gesture: NSString,length: CGFloat) {
         
         if Int(length) < CircleSetCountLeast {
@@ -457,7 +463,7 @@ class GYCircleView: UIView {
             //2.改变状态为error
             changeCircleInCircleSetWithState(CircleState.CircleStateError)
         } else { //>= 4个
-       
+            
             let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey)
             
             if gestureOne == nil {//未输入过少于4的手势
@@ -625,7 +631,8 @@ class GYCircleView: UIView {
         let gesture = NSMutableString.init()
         let circleSetArr = NSArray.init(array: circleSet)
         for circle: GYCircle in circleSetArr as! [GYCircle] {
-            //遍历取tag拼接字符串
+            //遍历取tag拼接字符串 作为密码标识符
+            print(circleSetArr.count)
             gesture.appendString(String(circle.tag))
         }
         
