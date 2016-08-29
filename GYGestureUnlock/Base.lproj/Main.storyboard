@@ -45,10 +45,20 @@
                                     <action selector="btnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Oe-wh-dkB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="指纹解锁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHb-yQ-DBh">
+                                <rect key="frame" x="266" y="475" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="93F-MK-3Xe">
+                                <rect key="frame" x="369" y="470" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="X5o-K0-cEM" firstAttribute="top" secondItem="pyZ-zX-wfs" secondAttribute="bottom" constant="59" id="2Wv-3O-wIg"/>
+                            <constraint firstItem="93F-MK-3Xe" firstAttribute="centerY" secondItem="fHb-yQ-DBh" secondAttribute="centerY" id="7qX-eb-bI7"/>
                             <constraint firstItem="pG0-Yo-CzY" firstAttribute="top" secondItem="UQs-xb-9V1" secondAttribute="bottom" constant="51" id="FQj-km-qyE"/>
                             <constraint firstItem="X5o-K0-cEM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NN2-mP-wpn"/>
                             <constraint firstItem="UQs-xb-9V1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="76" id="Oq3-g0-eb6"/>
@@ -56,9 +66,15 @@
                             <constraint firstItem="UQs-xb-9V1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UEd-je-rli"/>
                             <constraint firstItem="pG0-Yo-CzY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W6N-T5-KzL"/>
                             <constraint firstItem="pyZ-zX-wfs" firstAttribute="top" secondItem="pG0-Yo-CzY" secondAttribute="bottom" constant="54" id="an1-2k-xK7"/>
+                            <constraint firstItem="93F-MK-3Xe" firstAttribute="leading" secondItem="fHb-yQ-DBh" secondAttribute="trailing" constant="35" id="b7j-DO-Cui"/>
+                            <constraint firstItem="fHb-yQ-DBh" firstAttribute="top" secondItem="X5o-K0-cEM" secondAttribute="bottom" constant="51" id="dd6-9E-o2A"/>
+                            <constraint firstItem="fHb-yQ-DBh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ghz-gS-clx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sSG-NW-hEX"/>
+                    <connections>
+                        <outlet property="touchIDSwitch" destination="93F-MK-3Xe" id="CtE-Ud-1ko"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

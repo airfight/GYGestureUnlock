@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ViewController: UIViewController ,UIAlertViewDelegate{
+    
+    @IBOutlet weak var touchIDSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "手势解锁"
         
+       
+        touchIDSwitch.addTarget(self, action: #selector(ViewController.touchIDAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+    }
+    
+    
+    func touchIDAction(touchSw: UISwitch) {
+        switch touchSw.on {
+        case false:
+            print("指纹解锁已关闭关闭")
+        case true:
+            print("指纹解锁已开启")
+            
+        }
     }
     
     @IBAction func btnAction(sender: UIButton) {
@@ -40,7 +57,7 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
                 
             } else {
                 let  alertView = UIAlertView(title: "温馨提示", message: "暂未设置手势密码,是否前往设置", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "设置")
-            
+                
                 alertView.show()
             }
             

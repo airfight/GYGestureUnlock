@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let context = LAContext()
+        var autherror: NSError?
+        var errorReason = "Secret"
+        
+        context.localizedFallbackTitle = "忘记密码"
+        
+        if Float(UIDevice.currentDevice().systemVersion) < 8.0 {
+            return false
+        }
+        
+        if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &autherror) {
+            context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason:errorReason, reply: { (sucess, error) in
+                
+                if sucess {
+                    print("sucess")
+                } else {
+                    print("failed")
+                    guard autherror != nil else {
+                        return
+                    }
+                    switch autherror!.code {
+                    case LAError.SystemCancel.rawValue:
+                        print("系统取消授权")
+                     
+                    case LAError.UserCancel.rawValue:
+                        print("用户取消验证")
+                   
+                    case LAError.AuthenticationFailed.rawValue:
+                        print("授权失败")
+                  
+                    case LAError.PasscodeNotSet.rawValue:
+                        print("系统未设置密码")
+              
+                    case LAError.TouchIDNotAvailable.rawValue:
+                        print("设备touchID不可用:未打开等等")
+      
+                    case LAError.TouchIDNotEnrolled.rawValue:
+                        print("用户未录入指纹")
+                    case LAError.UserFallback.rawValue:
+                        print("用户选择输入密码")
+                        
+                    default:
+                        print("-----")
+                    }
+                }
+                
+            })
+        } else {
+            
+            print("搞搞搞")
+            //不支持指纹识别
+           print(autherror?.localizedDescription)
+        }
+        
+        
         return true
     }
 

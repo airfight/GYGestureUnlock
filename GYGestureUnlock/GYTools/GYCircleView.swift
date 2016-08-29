@@ -581,7 +581,7 @@ class GYCircleView: UIView {
             if !(self.circleSet!.containsObject(centerCircle!)) {
                 //插入数组中
                 self.circleSet?.insertObject(centerCircle!, atIndex: (self.circleSet?.count)! - 1)
-                //指定此圆的角度与上一个角度相同。
+                //指定此圆的角度与上一个角度相同。否则会造成移位
                 centerCircle?.angle = lastTwo.angle
                 
             }
