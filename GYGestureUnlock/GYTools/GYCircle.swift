@@ -55,7 +55,7 @@ class GYCircle: UIView {
     var type: CircleTye?
     /// 是否带有箭头  默认有
     var isArrow:Bool = true
-    /// 角度
+    /// 角度 三角形的方向
     var _angle:CGFloat?
     var angle:CGFloat?
         {
@@ -77,7 +77,7 @@ class GYCircle: UIView {
         
         guard (self.state != nil) else {
             return  CircleStateNormalOutsideColor
-
+            
         }
         switch self.state! {
         case CircleState.CircleStateNormal:
@@ -159,8 +159,8 @@ class GYCircle: UIView {
     init() {
         super.init(frame: CGRectZero)
         self.backgroundColor = CircleBackgroundColor
-    
-//        self.angle = 5
+        angle = 0
+        //        self.angle = 5
     }
     //    
     //    convenience  init() {
@@ -172,6 +172,7 @@ class GYCircle: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = CircleBackgroundColor
+        angle = 0
         
     }
     
@@ -179,6 +180,7 @@ class GYCircle: UIView {
         
         super.init(coder: aDecoder)
         backgroundColor = CircleBackgroundColor
+        angle = 0
         fatalError("init(coder:) has not been implemented")
         
     }
@@ -228,8 +230,11 @@ class GYCircle: UIView {
         let translateXY = rect.size.width * 0.5
         //平移
         CGContextTranslateCTM(ctx, translateXY, translateXY)
-        //TODO:-
-        angle = 0
+        //已解决:- 三角形箭头指向
+        //        angle = 2
+        guard angle != nil else {
+            return
+        }
         CGContextRotateCTM(ctx, angle!)
         //再平移回来
         CGContextTranslateCTM(ctx, -translateXY, -translateXY)
@@ -298,7 +303,7 @@ class GYCircle: UIView {
         CGContextFillPath(ctx)
         //
         CGContextStrokePath(ctx)
-       
+        
         //        CGPathRelease(trianglePathM)
         
     }
