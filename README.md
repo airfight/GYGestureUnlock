@@ -181,7 +181,7 @@ Swift版仿支付宝的手势解锁，而且提供方法进行参数修改，能
     3)init初始化      
     4)一些可选值未初始化时会nil导致崩溃、等等宝宝好像哭。        
     
-    
+    [简书](http://www.jianshu.com/p/c2b437faee67)
    毕竟我是一个菜菜菜鸟，望有Bug和好的建议了邮件我GiantForJade@163.com QQ(270535693),求Star,3Q。
 
   
