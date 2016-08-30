@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        /*
         let context = LAContext()
         var autherror: NSError?
         var errorReason = "Secret"
@@ -70,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //不支持指纹识别
            print(autherror?.localizedDescription)
         }
-        
+        */
         
         return true
     }
