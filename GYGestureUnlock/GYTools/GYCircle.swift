@@ -255,8 +255,9 @@ class GYCircle: UIView {
         
         
         let circlePath = CGMutablePath()
-        
-        CGPathAddEllipseInRect(circlePath, nil, rect)
+
+        circlePath.addEllipse(in: rect)
+//        CGPathAddEllipseInRect(circlePath, nil, rect)
         ctx.addPath(circlePath)
         color.set()
         ctx.setLineWidth(CircleEdgeWidth)
@@ -277,7 +278,8 @@ class GYCircle: UIView {
     fileprivate func drawSolidCircleWithContext(_ ctx: CGContext,rect: CGRect, radio: CGFloat, color: UIColor) {
         
         let circlePath = CGMutablePath()
-        CGPathAddEllipseInRect(circlePath, nil, CGRect(x: rect.size.width / 2 * (1 - radio) + CircleEdgeWidth, y: rect.size.width / 2 * (1 - radio) + CircleEdgeWidth, width: rect.size.width * radio - CircleEdgeWidth * 2, height: rect.size.width * radio - CircleEdgeWidth * 2))
+        circlePath.addEllipse(in: CGRect(x: rect.size.width / 2 * (1 - radio) + CircleEdgeWidth, y: rect.size.width / 2 * (1 - radio) + CircleEdgeWidth, width: rect.size.width * radio - CircleEdgeWidth * 2, height: rect.size.width * radio - CircleEdgeWidth * 2))
+//        CGPathAddEllipseInRect(circlePath, nil, CGRect(x: rect.size.width / 2 * (1 - radio) + CircleEdgeWidth, y: rect.size.width / 2 * (1 - radio) + CircleEdgeWidth, width: rect.size.width * radio - CircleEdgeWidth * 2, height: rect.size.width * radio - CircleEdgeWidth * 2))
         color.set()
         ctx.addPath(circlePath)
         ctx.fillPath()
@@ -293,10 +295,13 @@ class GYCircle: UIView {
         
         
         let trianglePathM = CGMutablePath() as CGMutablePath
-        
-        CGPathMoveToPoint(trianglePathM, nil, point.x , point.y)
-        CGPathAddLineToPoint(trianglePathM, nil, point.x - length/2, point.y + length/2)
-        CGPathAddLineToPoint(trianglePathM, nil, point.x + length/2, point.y + length/2)
+
+        trianglePathM.move(to: point)
+//        CGPathMoveToPoint(trianglePathM, &transform, point.x , point.y)
+        trianglePathM.addLine(to: CGPoint(x: point.x - length/2, y: point.y + length/2))
+//        CGPathAddLineToPoint(trianglePathM,nil, point.x - length/2, point.y + length/2)
+        trianglePathM.addLine(to: CGPoint(x: point.x + length/2, y: point.y + length/2))
+//        CGPathAddLineToPoint(trianglePathM, nil, point.x + length/2, point.y + length/2)
         
         ctx.addPath(trianglePathM)
         color.set()

@@ -229,7 +229,8 @@ class GYCircleView: UIView {
         clipSubviewsWhenConnectInContext(ctx!, clip: self.clip)
         
         //剪裁上下文
-        CGContextEOClip(ctx!)
+        ctx?.clip()
+//        CGContextEOClip(ctx!)
         
         //遍历数组中的circle
         let num = self.circleSet?.count
