@@ -18,13 +18,13 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
         self.title = "手势解锁"
         
        
-        touchIDSwitch.addTarget(self, action: #selector(ViewController.touchIDAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        touchIDSwitch.addTarget(self, action: #selector(ViewController.touchIDAction(_:)), for: UIControlEvents.valueChanged)
         
     }
     
     
-    func touchIDAction(touchSw: UISwitch) {
-        switch touchSw.on {
+    func touchIDAction(_ touchSw: UISwitch) {
+        switch touchSw.isOn {
         case false:
             print("指纹解锁已关闭关闭")
         case true:
@@ -33,13 +33,13 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
         }
     }
     
-    @IBAction func btnAction(sender: UIButton) {
+    @IBAction func btnAction(_ sender: UIButton) {
         
         switch sender.tag {
         case 1:
             //设置手势密码
             let gesture = GestureViewController()
-            gesture.type = GestureViewControllerType.Setting
+            gesture.type = GestureViewControllerType.setting
             
             navigationController?.pushViewController(gesture, animated: true)
             
@@ -50,7 +50,7 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
             if GYCircleConst.getGestureWithKey(gestureFinalSaveKey) != nil {
                 
                 let gestureVC = GestureViewController()
-                gestureVC.type = GestureViewControllerType.Login
+                gestureVC.type = GestureViewControllerType.login
                 
                 navigationController?.pushViewController(gestureVC, animated: true)
                 
@@ -84,11 +84,11 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
     }
     
     //MARK: - UIALertViewDelegate
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         
         if buttonIndex == 1 {
             let gesture = GestureViewController()
-            gesture.type = GestureViewControllerType.Setting
+            gesture.type = GestureViewControllerType.setting
             
             navigationController?.pushViewController(gesture, animated: true)
             
@@ -96,10 +96,10 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
     
 }

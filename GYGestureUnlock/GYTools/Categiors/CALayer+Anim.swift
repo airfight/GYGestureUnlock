@@ -24,9 +24,9 @@ extension CALayer {
         kfa.repeatCount = 2
         
         //移除
-        kfa.removedOnCompletion = true
+        kfa.isRemovedOnCompletion = true
         
-        addAnimation(kfa, forKey: "shake")
+        add(kfa, forKey: "shake")
         
     }
     

@@ -18,8 +18,8 @@ class GYLockLabel: UILabel {
     }
     
     func viewPrepare() {
-        self.font = UIFont.systemFontOfSize(14)
-        self.textAlignment = .Center
+        self.font = UIFont.systemFont(ofSize: 14)
+        self.textAlignment = .center
     }
     
     /**
@@ -27,7 +27,7 @@ class GYLockLabel: UILabel {
      
      - parameter msg: 信息
      */
-    func showNormalMag(msg: NSString){
+    func showNormalMag(_ msg: NSString){
         self.text = msg as String
         self.textColor = textColorNormalState
     }
@@ -37,7 +37,7 @@ class GYLockLabel: UILabel {
      
      - parameter msg: 信息
      */
-    func showWarnMsg(msg: String){
+    func showWarnMsg(_ msg: String){
         self.text = msg
         self.textColor = textColorWarningState
     }
@@ -47,7 +47,7 @@ class GYLockLabel: UILabel {
      
      - parameter msg: 警示信息
      */
-    func showWarnMsgAndShake(msg:String) {
+    func showWarnMsgAndShake(_ msg:String) {
         
         self.text = msg
         self.textColor = textColorWarningState

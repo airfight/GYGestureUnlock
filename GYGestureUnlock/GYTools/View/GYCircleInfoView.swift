@@ -11,7 +11,7 @@ import UIKit
 class GYCircleInfoView: UIView {
     
     init() {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         lockViewPrepare()
         
     }
@@ -31,7 +31,7 @@ class GYCircleInfoView: UIView {
         for _ in 0..<9 {
             
             let circl = GYCircle()
-            circl.type = CircleTye.CircleTypeInfo
+            circl.type = CircleTye.circleTypeInfo
             
             addSubview(circl)
             
@@ -44,7 +44,7 @@ class GYCircleInfoView: UIView {
         
         let itemViewWH = CircleInfoRadius * 2
         let marginValue = (self.frame.size.width - 3 * itemViewWH) / 3.0
-        (self.subviews as NSArray).enumerateObjectsUsingBlock { (object, idx, stop) in
+        (self.subviews as NSArray).enumerateObjects({ (object, idx, stop) in
             let row: NSInteger = idx % 3;
             let col = idx / 3;
             
@@ -56,7 +56,7 @@ class GYCircleInfoView: UIView {
             //设置tag->用于记录密码的单元
             (object as! UIView).tag = idx + 1
             (object as! UIView).frame = frame
-        }
+        })
         
         
     }
