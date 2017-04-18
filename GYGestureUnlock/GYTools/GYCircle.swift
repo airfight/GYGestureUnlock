@@ -296,7 +296,9 @@ class GYCircle: UIView {
         
         let trianglePathM = CGMutablePath() as CGMutablePath
 
+        //3.0+
         trianglePathM.move(to: point)
+        //2.0+
 //        CGPathMoveToPoint(trianglePathM, &transform, point.x , point.y)
         trianglePathM.addLine(to: CGPoint(x: point.x - length/2, y: point.y + length/2))
 //        CGPathAddLineToPoint(trianglePathM,nil, point.x - length/2, point.y + length/2)
