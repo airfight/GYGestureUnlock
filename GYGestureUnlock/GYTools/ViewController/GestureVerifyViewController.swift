@@ -14,7 +14,7 @@ class GestureVerifyViewController: UIViewController {
     /// 默认为验证手势
     var isToSetNewGesture:Bool = false
     
-    private var msgLabel: GYLockLabel?
+    fileprivate var msgLabel: GYLockLabel?
     
     
     override func viewDidLoad() {
@@ -25,13 +25,13 @@ class GestureVerifyViewController: UIViewController {
         
         let lockView = GYCircleView()
         lockView.delegate = self
-        lockView.type = CircleViewType.CircleViewTypeVerify
+        lockView.type = CircleViewType.circleViewTypeVerify
         view.addSubview(lockView)
         
         let msgLabel = GYLockLabel()
         msgLabel.frame = CGRect(x: 0, y: 0, width: kScreenW, height: 14)
-        msgLabel.center = CGPoint(x: kScreenW/2, y: CGRectGetMinY(lockView.frame) - 30)
-        msgLabel.showNormalMag(gestureTextOldGesture)
+        msgLabel.center = CGPoint(x: kScreenW/2, y: lockView.frame.minY - 30)
+        msgLabel.showNormalMag(gestureTextOldGesture as NSString)
         self.msgLabel = msgLabel
         view.addSubview(msgLabel)
         
@@ -43,20 +43,20 @@ class GestureVerifyViewController: UIViewController {
 extension GestureVerifyViewController:GYCircleViewDelegate{
     
     
-    func circleViewdidCompleteLoginGesture(view: GYCircleView, type: CircleViewType, gesture: String, result: Bool) {
+    func circleViewdidCompleteLoginGesture(_ view: GYCircleView, type: CircleViewType, gesture: String, result: Bool) {
         
-        if type == CircleViewType.CircleViewTypeVerify {
+        if type == CircleViewType.circleViewTypeVerify {
             if result {
                 print("验证成功")
         
                 if isToSetNewGesture {
                     let gesture = GestureViewController()
-                    gesture.type = GestureViewControllerType.Setting
+                    gesture.type = GestureViewControllerType.setting
                     
                     navigationController?.pushViewController(gesture, animated: true)
                     
                 } else {
-                    navigationController?.popToRootViewControllerAnimated(true)
+                    navigationController?.popToRootViewController(animated: true)
                 }
                 
             } else {
@@ -67,15 +67,15 @@ extension GestureVerifyViewController:GYCircleViewDelegate{
         
     }
     
-    func circleViewdidCompleteSetFirstGesture(view: GYCircleView, type: CircleViewType, gesture: String) {
+    func circleViewdidCompleteSetFirstGesture(_ view: GYCircleView, type: CircleViewType, gesture: String) {
         
     }
     
-    func circleViewConnectCirclesLessThanNeedWithGesture(view: GYCircleView, type: CircleViewType, gesture: String) {
+    func circleViewConnectCirclesLessThanNeedWithGesture(_ view: GYCircleView, type: CircleViewType, gesture: String) {
         
     }
     
-    func circleViewdidCompleteSetSecondGesture(view: GYCircleView, type: CircleViewType, gesture: String, result: Bool) {
+    func circleViewdidCompleteSetSecondGesture(_ view: GYCircleView, type: CircleViewType, gesture: String, result: Bool) {
         
     }
     

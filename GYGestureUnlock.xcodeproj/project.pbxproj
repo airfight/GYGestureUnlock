@@ -253,13 +253,16 @@
 					B7BF333F1D66D9E2007846A4 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = UZZG6NM74T;
+						LastSwiftMigration = 0820;
 					};
 					B7BF33531D66D9E3007846A4 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 						TestTargetID = B7BF333F1D66D9E2007846A4;
 					};
 					B7BF335E1D66D9E3007846A4 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 						TestTargetID = B7BF333F1D66D9E2007846A4;
 					};
 				};
@@ -476,6 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -491,6 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -502,6 +507,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GYGestureUnlock.app/GYGestureUnlock";
 			};
 			name = Debug;
@@ -514,6 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GYGestureUnlock.app/GYGestureUnlock";
 			};
 			name = Release;
@@ -525,6 +532,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = GYGestureUnlock;
 			};
 			name = Debug;
@@ -536,6 +544,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadeFor.GYGestureUnlockUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = GYGestureUnlock;
 			};
 			name = Release;

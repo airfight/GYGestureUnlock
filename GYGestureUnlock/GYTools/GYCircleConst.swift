@@ -9,12 +9,12 @@
 import UIKit
 
 
-let kScreenW = UIScreen.mainScreen().bounds.size.width
+let kScreenW = UIScreen.main.bounds.size.width
 
-let kScreenH = UIScreen.mainScreen().bounds.size.height
+let kScreenH = UIScreen.main.bounds.size.height
 
 /// 单个圆的背景色
-let CircleBackgroundColor = UIColor.clearColor()
+let CircleBackgroundColor = UIColor.clear
 
 /// 解锁背景色
 let CircleViewBackgroundColor = UIColor.colorWithRgba(13, g: 52, b: 89, a: 1)
@@ -29,7 +29,7 @@ let CircleStateSelectedOutsideColor = UIColor.colorWithRgba(34, g: 178, b: 246, 
 let CircleStateErrorOutsideColor = UIColor.colorWithRgba(254, g: 82, b: 92, a: 1)
 
 /// 普通状态下内实心圆颜色
-let CircleStateNormalInsideColor = UIColor.clearColor()
+let CircleStateNormalInsideColor = UIColor.clear
 
 /// 选中状态下内实心圆颜色
 let CircleStateSelectedInsideColor = UIColor.colorWithRgba(34, g: 178, b: 246, a: 1)
@@ -38,7 +38,7 @@ let CircleStateSelectedInsideColor = UIColor.colorWithRgba(34, g: 178, b: 246, a
 let CircleStateErrorInsideColor = UIColor.colorWithRgba(254, g: 82, b: 92, a: 1)
 
 /// 普通状态下三角形颜色
-let CircleStateNormalTrangleColor = UIColor.clearColor()
+let CircleStateNormalTrangleColor = UIColor.clear
 
 /// 选中状态下三角形颜色
 let CircleStateSelectedTrangleColor = UIColor.colorWithRgba(34, g: 178, b: 246, a: 1)
@@ -62,7 +62,7 @@ let CircleConnectLineWidth:CGFloat = 1.0
 let CircleRadius:CGFloat = 30.0
 
 /// 单个圆的圆心
-let CircleCenter = CGPointMake(CircleRadius, CircleRadius)
+let CircleCenter = CGPoint(x: CircleRadius, y: CircleRadius)
 
 /// 空心圆圆环宽度
 let CircleEdgeWidth:CGFloat = 1.0
@@ -129,9 +129,9 @@ class GYCircleConst: NSObject {
      - parameter key:     存储key
      */
     
-    static func saveGesture(gesture: String?,key: String) {
-        NSUserDefaults.standardUserDefaults().setObject(gesture, forKey: key)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    static func saveGesture(_ gesture: String?,key: String) {
+        UserDefaults.standard.set(gesture, forKey: key)
+        UserDefaults.standard.synchronize()
         
     }
     
@@ -140,9 +140,9 @@ class GYCircleConst: NSObject {
      
      - parameter key: 字符串对象
      */
-    static func getGestureWithKey(key: String) -> String?{
+    static func getGestureWithKey(_ key: String) -> String?{
         
-        return NSUserDefaults.standardUserDefaults().objectForKey(key) as? String ?? nil
+        return UserDefaults.standard.object(forKey: key) as? String ?? nil
     }
     
     

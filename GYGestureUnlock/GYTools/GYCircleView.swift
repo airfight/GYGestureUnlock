@@ -1,3 +1,4 @@
+
 //
 //  GYCircleView.swift
 //  GYGestureUnlock
@@ -7,14 +8,38 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 enum CircleViewType: Int {
     /// 设置手势密码
-    case CircleViewTypeSetting = 1
+    case circleViewTypeSetting = 1
     /// 登陆手势密码
-    case CircleViewTypeLogin
+    case circleViewTypeLogin
     /// 验证旧手势密码
-    case CircleViewTypeVerify
+    case circleViewTypeVerify
 }
 
 protocol GYCircleViewDelegate {
@@ -26,7 +51,7 @@ protocol GYCircleViewDelegate {
      *  @param type    type
      *  @param gesture 手势结果
      */
-    func circleViewConnectCirclesLessThanNeedWithGesture(view: GYCircleView,type: CircleViewType,gesture: String)
+    func circleViewConnectCirclesLessThanNeedWithGesture(_ view: GYCircleView,type: CircleViewType,gesture: String)
     
     /**
      *  连线个数多于或等于4个，获取到第一个手势密码时通知代理
@@ -35,7 +60,7 @@ protocol GYCircleViewDelegate {
      *  @param type    type
      *  @param gesture 第一个次保存的密码
      */
-    func circleViewdidCompleteSetFirstGesture(view: GYCircleView,type: CircleViewType,gesture: String)
+    func circleViewdidCompleteSetFirstGesture(_ view: GYCircleView,type: CircleViewType,gesture: String)
     
     /**
      *  获取到第二个手势密码时通知代理
@@ -45,9 +70,9 @@ protocol GYCircleViewDelegate {
      *  @param gesture 第二次手势密码
      *  @param equal   第二次和第一次获得的手势密码匹配结果
      */
-    func circleViewdidCompleteSetSecondGesture(view: GYCircleView,type: CircleViewType,gesture: String,result: Bool)
+    func circleViewdidCompleteSetSecondGesture(_ view: GYCircleView,type: CircleViewType,gesture: String,result: Bool)
     
-    func circleViewdidCompleteLoginGesture(view: GYCircleView,type: CircleViewType,gesture: String,result: Bool)
+    func circleViewdidCompleteLoginGesture(_ view: GYCircleView,type: CircleViewType,gesture: String,result: Bool)
     
 }
 
@@ -62,12 +87,12 @@ class GYCircleView: UIView {
         {
         set {
             _arrow = newValue
-            (self.subviews as NSArray).enumerateObjectsUsingBlock { (circle,_,_) in
+            (self.subviews as NSArray).enumerateObjects({ (circle,_,_) in
                 let circler = circle as! GYCircle
                 circler.isArrow = newValue!
                 
                 
-            }
+            })
             
         }
         get {
@@ -90,7 +115,7 @@ class GYCircleView: UIView {
     //    @objc(init)
     init(){
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         lockViewPrepare()
         circleSet = NSMutableArray()
         //        super.init()
@@ -119,8 +144,8 @@ class GYCircleView: UIView {
     
     func lockViewPrepare() {
         
-        self.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width - CircleViewEdgeMargin * 2, height: UIScreen.mainScreen().bounds.size.width - CircleViewEdgeMargin * 2)
-        self.center = CGPoint(x: UIScreen.mainScreen().bounds.size.width / 2, y: CircleViewCenterY)
+        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - CircleViewEdgeMargin * 2, height: UIScreen.main.bounds.size.width - CircleViewEdgeMargin * 2)
+        self.center = CGPoint(x: UIScreen.main.bounds.size.width / 2, y: CircleViewCenterY)
         
         /**
          *  默认裁剪子控件
@@ -133,7 +158,7 @@ class GYCircleView: UIView {
         for _ in 0..<9 {
             
             let circle = GYCircle()
-            circle.type = CircleTye.CircleTypeGesture
+            circle.type = CircleTye.circleTypeGesture
             circle.isArrow = self.arrow!
             
             
@@ -149,7 +174,7 @@ class GYCircleView: UIView {
         super.layoutSubviews()
         let itemViewWH = CircleRadius * 2
         let marginValue = (self.frame.size.width - 3 * itemViewWH) / 3.0
-        (self.subviews as NSArray).enumerateObjectsUsingBlock { (object, idx, stop) in
+        (self.subviews as NSArray).enumerateObjects({ (object, idx, stop) in
             let row: NSInteger = idx % 3;
             let col = idx / 3;
             
@@ -161,19 +186,19 @@ class GYCircleView: UIView {
             //设置tag->用于记录密码的单元
             (object as! GYCircle).tag = idx + 1
             (object as! GYCircle).frame = frame
-        }
+        })
         
         
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         //如果没有任何选中按钮  直接return
         if self.circleSet == nil || self.circleSet?.count == 0 {
             return
         }
         
         let color: UIColor?
-        if getCircleState() == CircleState.CircleStateError {
+        if getCircleState() == CircleState.circleStateError {
             color = CircleConnectLineErrorColor
         } else {
             color = CircleConnectLineNormalColor
@@ -192,19 +217,20 @@ class GYCircleView: UIView {
      - parameter rect:  图形上下文
      - parameter color: 连线颜色
      */
-    func connectCirclesInRect(rect: CGRect, color: UIColor) {
+    func connectCirclesInRect(_ rect: CGRect, color: UIColor) {
         
         //获取上下文
         let ctx = UIGraphicsGetCurrentContext()
         
         //添加路径
-        CGContextAddRect(ctx, rect)
+        ctx?.addRect(rect)
         
         //是否剪裁
         clipSubviewsWhenConnectInContext(ctx!, clip: self.clip)
         
         //剪裁上下文
-        CGContextEOClip(ctx!)
+        ctx?.clip()
+//        CGContextEOClip(ctx!)
         
         //遍历数组中的circle
         let num = self.circleSet?.count
@@ -214,51 +240,51 @@ class GYCircleView: UIView {
             let circle = self.circleSet![i] as! GYCircle
             
             if i == 0 {//第一个按钮
-                CGContextMoveToPoint(ctx!, circle.center.x,circle.center.y)
+                ctx!.move(to: CGPoint(x: circle.center.x, y: circle.center.y))
                 
                 
             } else {
                 //全部是线
-                CGContextAddLineToPoint(ctx!, circle.center.x, circle.center.y)
+                ctx!.addLine(to: CGPoint(x: circle.center.x, y: circle.center.y))
             }
             
         }
         weak var weakSelf = self
         //连接最后一个按钮到手指当前触摸的点
-        if CGPointEqualToPoint(self.currentPoint!, CGPointZero) == false {
-            (subviews as NSArray).enumerateObjectsUsingBlock({ (circle, idx, stop) in
+        if self.currentPoint!.equalTo(CGPoint.zero) == false {
+            (subviews as NSArray).enumerateObjects({ (circle, idx, stop) in
                 
-                if weakSelf?.getCircleState() == CircleState.CircleStateError || weakSelf?.getCircleState() == CircleState.CircleStateLastOneError {
+                if weakSelf?.getCircleState() == CircleState.circleStateError || weakSelf?.getCircleState() == CircleState.circleStateLastOneError {
                     //如果是错误的状态下不连接到当前点
                 } else {
-                    CGContextAddLineToPoint(ctx, (self.currentPoint?.x)!, (self.currentPoint?.y)!)
+                    ctx?.addLine(to: CGPoint(x: (self.currentPoint?.x)!, y: (self.currentPoint?.y)!))
                 }
             })
         }
         
         //线条转角样式
-        CGContextSetLineCap(ctx, CGLineCap.Round)
-        CGContextSetLineJoin(ctx, CGLineJoin.Round)
+        ctx?.setLineCap(CGLineCap.round)
+        ctx?.setLineJoin(CGLineJoin.round)
         
         //设置绘图的属性
-        CGContextSetLineWidth(ctx, CircleConnectLineWidth)
+        ctx?.setLineWidth(CircleConnectLineWidth)
         
         //线条颜色
         color.set()
         
         //渲染路径
-        CGContextStrokePath(ctx)
+        ctx?.strokePath()
     }
     
     //MARK: - 是否剪裁
-    func clipSubviewsWhenConnectInContext(ctx: CGContextRef,clip:Bool) {
+    func clipSubviewsWhenConnectInContext(_ ctx: CGContext,clip:Bool) {
         
         if clip {
             //遍历所有子控件
-            (subviews as NSArray).enumerateObjectsUsingBlock({ (circle, idx, stop) in
+            (subviews as NSArray).enumerateObjects({ (circle, idx, stop) in
                 
                 //确定剪裁的形状
-                CGContextAddEllipseInRect(ctx, (circle as! GYCircle).frame)
+                ctx.addEllipse(in: (circle as! GYCircle).frame)
                 
             })
         }
@@ -266,55 +292,54 @@ class GYCircleView: UIView {
     }
     //MARK:- 手势方法 began - moved - end
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         gestureEndResetMembers()
-        currentPoint = CGPointZero
+        currentPoint = CGPoint.zero
         let touch = (touches as NSSet).anyObject()
         
-        let point = touch?.locationInView(self)
-        (subviews as NSArray).enumerateObjectsUsingBlock { (circle, idx, stop) in
+        let point = (touch as AnyObject).location(in: self)
+        (subviews as NSArray).enumerateObjects({ (circle, idx, stop) in
             
             
             let cir = circle as! GYCircle
             
-            if CGRectContainsPoint(cir.frame, point!) {
+            if cir.frame.contains(point) {
                 
                 
-                cir.state = CircleState.CircleStateSelected
-                self.circleSet?.addObject(cir)
+                cir.state = CircleState.circleStateSelected
+                self.circleSet?.add(cir)
                 print("添加子View的tag:\(cir.tag)")
             }
             
             
-        }
+        })
         
         //数组中最后一个对象的处理
-        circleSetLastObjectWithState(CircleState.CircleStateLastOneSelected)
+        circleSetLastObjectWithState(CircleState.circleStateLastOneSelected)
         setNeedsDisplay()
         
         
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        currentPoint = CGPointZero
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        currentPoint = CGPoint.zero
         let touch = (touches as NSSet).anyObject()
         
         //获取手势所在的点坐标
-        let point = touch?.locationInView(self)
-        (subviews as NSArray).enumerateObjectsUsingBlock { (circle, idx, stop) in
+        let point = (touch as AnyObject).location(in: self)
+        (subviews as NSArray).enumerateObjects({ (circle, idx, stop) in
             
-            //我说
             let cir = circle as! GYCircle
-            if CGRectContainsPoint(cir.frame, point!) {
+            if cir.frame.contains(point) {
                 
-                //此处脑残了 self.circleSet?.containsObject(cir) != nil
+                //self.circleSet?.containsObject(cir) != nil
                 // 判断数组中是否包含此view 包含不添加 不包含则添加
-                if self.circleSet!.containsObject(cir) {
+                if self.circleSet!.contains(cir) {
                     //                    print("添加子View的tag:\(cir.tag)")
                     //                    self.circleSet?.addObject(cir)
                     //                    self.calAngleAndconnectTheJumpedCircle()
                 } else {
-                    self.circleSet?.addObject(cir)
+                    self.circleSet?.add(cir)
                     
                     // move过程中的连线(包含跳跃连线的处理)
                     self.calAngleAndconnectTheJumpedCircle()
@@ -323,31 +348,31 @@ class GYCircleView: UIView {
                 self.currentPoint = point
             }
             
-        }
+        })
         
         guard (self.circleSet != nil) else {
             return
         }
         
-        (self.circleSet! as NSArray).enumerateObjectsUsingBlock { (circle, idx, stop) in
+        (self.circleSet! as NSArray).enumerateObjects({ (circle, idx, stop) in
             
             let circlel = circle as! GYCircle
-            circlel.state = CircleState.CircleStateSelected
+            circlel.state = CircleState.circleStateSelected
             
             // 如果是登录或者验证原手势密码  就改为对应的状态
-            if self.type != CircleViewType.CircleViewTypeSetting {
-                circlel.state = CircleState.CircleStateLastOneSelected
+            if self.type != CircleViewType.circleViewTypeSetting {
+                circlel.state = CircleState.circleStateLastOneSelected
             }
             
-        }
+        })
         
         //数组中最后一个对象的处理
-        self.circleSetLastObjectWithState(CircleState.CircleStateLastOneSelected)
+        self.circleSetLastObjectWithState(CircleState.circleStateLastOneSelected)
         
         setNeedsDisplay()
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.hasClean = false
         guard self.circleSet != nil else {
             return
@@ -362,12 +387,12 @@ class GYCircleView: UIView {
         
         //手势绘制结果处理
         switch self.type! {
-        case CircleViewType.CircleViewTypeSetting:
+        case CircleViewType.circleViewTypeSetting:
             gestureEndByTypeSettingWithGesture(gesture, length: CGFloat(length))
             break
-        case CircleViewType.CircleViewTypeLogin:
+        case CircleViewType.circleViewTypeLogin:
             gestureEndByTypeLoginWithGesture(gesture, length: CGFloat(length))
-        case CircleViewType.CircleViewTypeVerify:
+        case CircleViewType.circleViewTypeVerify:
             gestureEndByTypeVerifyWithGesture(gesture, length: CGFloat(length))
             
         }
@@ -379,9 +404,9 @@ class GYCircleView: UIView {
     
     func errorToDisplay() {
         weak var weakSelf = self
-        if getCircleState() == CircleState.CircleStateError || getCircleState() == CircleState.CircleStateLastOneError {
+        if getCircleState() == CircleState.circleStateError || getCircleState() == CircleState.circleStateLastOneError {
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(UInt64(kdisplayTime) * NSEC_PER_SEC)), dispatch_get_main_queue(), {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(UInt64(kdisplayTime) * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
                 
                 weakSelf?.gestureEndResetMembers()
             })
@@ -406,7 +431,7 @@ class GYCircleView: UIView {
             if !self.hasClean! {
                 
                 //手势完毕、选中的圆回归普通状态
-                self.changeCircleInCircleSetWithState(CircleState.CircleStateNormal)
+                self.changeCircleInCircleSetWithState(CircleState.circleStateNormal)
                 
                 //清空数组
                 self.circleSet?.removeAllObjects()
@@ -424,7 +449,7 @@ class GYCircleView: UIView {
     }
     
     // 雷同于OC 中 synchronized 所线程
-    func synchronized(lock:AnyObject,block:() throws -> Void)  rethrows{
+    func synchronized(_ lock:AnyObject,block:() throws -> Void)  rethrows{
         objc_sync_enter(lock)
         defer{
             objc_sync_exit(lock)
@@ -440,13 +465,13 @@ class GYCircleView: UIView {
     //MARK: - 清空所有子控件的方向
     func resetAllCirclesDirect() {
         
-        (subviews as NSArray).enumerateObjectsUsingBlock { (obj, idx, stop) in
+        (subviews as NSArray).enumerateObjects({ (obj, idx, stop) in
             (obj as! GYCircle).angle = 0
-        }
+        })
     }
     
     //MARK:- 对数组最后一个对象的处理
-    func circleSetLastObjectWithState(state: CircleState) {
+    func circleSetLastObjectWithState(_ state: CircleState) {
         guard (self.circleSet?.lastObject != nil)  else {
             return
         }
@@ -454,7 +479,7 @@ class GYCircleView: UIView {
     }
     
     //MARK: - 解锁类型: 设置 手势路径处理
-    func gestureEndByTypeSettingWithGesture(gesture: NSString,length: CGFloat) {
+    func gestureEndByTypeSettingWithGesture(_ gesture: NSString,length: CGFloat) {
         
         if Int(length) < CircleSetCountLeast {
             //连接少于最少个数(默认4个)
@@ -463,7 +488,7 @@ class GYCircleView: UIView {
             self.delegate?.circleViewConnectCirclesLessThanNeedWithGesture(self, type: self.type!, gesture: gesture as String)
             
             //2.改变状态为error
-            changeCircleInCircleSetWithState(CircleState.CircleStateError)
+            changeCircleInCircleSetWithState(CircleState.circleStateError)
         } else { //>= 4个
             
             let gestureOne = GYCircleConst.getGestureWithKey(gestureOneSaveKey)
@@ -489,7 +514,7 @@ class GYCircleView: UIView {
                     GYCircleConst.saveGesture(gesture as String, key: gestureFinalSaveKey)
                 } else {
                     //不一致 重绘回显
-                    changeCircleInCircleSetWithState(CircleState.CircleStateError)
+                    changeCircleInCircleSetWithState(CircleState.circleStateError)
                 }
             }
             
@@ -498,7 +523,7 @@ class GYCircleView: UIView {
     }
     
     //MARK: - 解锁类型:登陆  手势路径的处理
-    func gestureEndByTypeLoginWithGesture(gesture: NSString, length:CGFloat) {
+    func gestureEndByTypeLoginWithGesture(_ gesture: NSString, length:CGFloat) {
         
         let password = GYCircleConst.getGestureWithKey(gestureFinalSaveKey)! as NSString
         
@@ -509,7 +534,7 @@ class GYCircleView: UIView {
         if equal {
             
         } else {
-            self.changeCircleInCircleSetWithState(CircleState.CircleStateError)
+            self.changeCircleInCircleSetWithState(CircleState.circleStateError)
         }
         
         
@@ -517,7 +542,7 @@ class GYCircleView: UIView {
     }
     
     //MARK: - 解锁类型:验证 手势路径的处理
-    func gestureEndByTypeVerifyWithGesture(gesture: NSString,length: CGFloat) {
+    func gestureEndByTypeVerifyWithGesture(_ gesture: NSString,length: CGFloat) {
         
         gestureEndByTypeLoginWithGesture(gesture, length: CGFloat(length))
         
@@ -526,18 +551,18 @@ class GYCircleView: UIView {
     
     
     //MARK: - 改变选中数组CircleSet子控件状态
-    func changeCircleInCircleSetWithState(state: CircleState) {
+    func changeCircleInCircleSetWithState(_ state: CircleState) {
         
-        self.circleSet?.enumerateObjectsUsingBlock({ (circle, idx, stop) in
+        self.circleSet?.enumerateObjects({ (circle, idx, stop) in
             
             let circleTy = circle as! GYCircle
             
             circleTy.state = state
             
             // 如果是错误状态，那就将最后一个按钮特殊处理
-            if state == CircleState.CircleStateError {
+            if state == CircleState.circleStateError {
                 if idx == (self.circleSet?.count)! - 1 {
-                    circleTy.state = CircleState.CircleStateLastOneError
+                    circleTy.state = CircleState.circleStateLastOneError
                 }
             }
             
@@ -558,7 +583,7 @@ class GYCircleView: UIView {
         let lastOne = circleSet?.lastObject as! GYCircle
         
         //倒数第二个
-        let lastTwo = circleSet?.objectAtIndex(self.circleSet!.count - 2) as! GYCircle
+        let lastTwo = circleSet?.object(at: self.circleSet!.count - 2) as! GYCircle
         
         //计算倒数第二个的位置
         let last_1_x = lastOne.center.x
@@ -578,9 +603,9 @@ class GYCircleView: UIView {
         
         if centerCircle != nil {
             //把跳过的圆加到数组中，他的位置是倒数第二个
-            if !(self.circleSet!.containsObject(centerCircle!)) {
+            if !(self.circleSet!.contains(centerCircle!)) {
                 //插入数组中
-                self.circleSet?.insertObject(centerCircle!, atIndex: (self.circleSet?.count)! - 1)
+                self.circleSet?.insert(centerCircle!, at: (self.circleSet?.count)! - 1)
                 //指定此圆的角度与上一个角度相同。否则会造成移位
                 centerCircle?.angle = lastTwo.angle
                 
@@ -590,14 +615,14 @@ class GYCircleView: UIView {
     }
     
     //提供两个点，返回一个中心点
-    func centerPointWithPointOneandTwo(pointOne: CGPoint,pointTwo: CGPoint) -> CGPoint
+    func centerPointWithPointOneandTwo(_ pointOne: CGPoint,pointTwo: CGPoint) -> CGPoint
     {
         let x1 = pointOne.x > pointTwo.x ? pointOne.x : pointTwo.x
         let x2 = pointOne.x < pointTwo.x ? pointOne.x : pointTwo.x
         let y1 = pointOne.y > pointTwo.y ? pointOne.y : pointTwo.y
         let y2 = pointOne.y < pointTwo.y ? pointOne.y : pointTwo.y
         
-        return CGPointMake((x1 + x2)/2, (y1 + y2)/2)
+        return CGPoint(x: (x1 + x2)/2, y: (y1 + y2)/2)
         
         
     }
@@ -609,12 +634,12 @@ class GYCircleView: UIView {
      
      - returns: 在就返回这个圆 不在返回nil
      */
-    func enumCircleSetToFindWhichSubviewContainTheCenterPoint(point: CGPoint) ->  GYCircle? {
+    func enumCircleSetToFindWhichSubviewContainTheCenterPoint(_ point: CGPoint) ->  GYCircle? {
         
         var centerCircle: GYCircle?
         
         for circle: GYCircle in subviews as! [GYCircle] {
-            if CGRectContainsPoint(circle.frame, point) {
+            if circle.frame.contains(point) {
                 centerCircle = circle
             }
         }
@@ -623,10 +648,10 @@ class GYCircleView: UIView {
             return nil
         }
         
-        if !(self.circleSet?.containsObject(centerCircle!))! {
+        if !(self.circleSet?.contains(centerCircle!))! {
             //这个circle的角度和倒数第二个circle角度一致
             
-            centerCircle?.angle = self.circleSet?.objectAtIndex((self.circleSet?.count)! - 2).angle
+            centerCircle?.angle = (self.circleSet?.object(at: (self.circleSet?.count)! - 2) as AnyObject).angle
         }
         guard (centerCircle != nil) else {
             print("此点不在圆内")
@@ -637,14 +662,14 @@ class GYCircleView: UIView {
     
     
     //MARK: - 将circleSet数组解析遍历，拼手势密码字符串
-    func getGestureResultFromCircleSet(circleSet: NSMutableArray) -> NSString {
+    func getGestureResultFromCircleSet(_ circleSet: NSMutableArray) -> NSString {
         
         let gesture = NSMutableString.init()
         let circleSetArr = NSArray.init(array: circleSet)
         for circle: GYCircle in circleSetArr as! [GYCircle] {
             //遍历取tag拼接字符串 作为密码标识符
             print(circleSetArr.count)
-            gesture.appendString(String(circle.tag))
+            gesture.append(String(circle.tag))
         }
         
         return gesture
