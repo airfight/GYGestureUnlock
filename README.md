@@ -1,7 +1,7 @@
 # GYGestureUnlock
 ***
 Swift版仿支付宝的手势解锁，而且提供方法进行参数修改，能解决项目开发中所有手势解锁的开发
-
+[swift3.0](https://github.com/airfight/GYGestureUnlock/tags)
 ## 此项目起因
 * 个人学习OC版手势解锁，感觉只看源码，没有太大效果，于是乎将其完全照抄转化为了神奇的Swift
 * [源OC版手势解锁](https://github.com/iosdeveloperpanc/PCGestureUnlock)
