@@ -18,12 +18,12 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
         self.title = "手势解锁"
         
        
-        touchIDSwitch.addTarget(self, action: #selector(ViewController.touchIDAction(_:)), for: UIControlEvents.valueChanged)
+        touchIDSwitch.addTarget(self, action: #selector(ViewController.touchIDAction(_:)), for: UIControl.Event.valueChanged)
         
     }
     
     
-    func touchIDAction(_ touchSw: UISwitch) {
+    @objc func touchIDAction(_ touchSw: UISwitch) {
         switch touchSw.isOn {
         case false:
             print("指纹解锁已关闭关闭")
@@ -46,7 +46,6 @@ class ViewController: UIViewController ,UIAlertViewDelegate{
             break
         case 2:
             //登录手势密码
-            print(GYCircleConst.getGestureWithKey(gestureOneSaveKey))
             if GYCircleConst.getGestureWithKey(gestureFinalSaveKey) != nil {
                 
                 let gestureVC = GestureViewController()

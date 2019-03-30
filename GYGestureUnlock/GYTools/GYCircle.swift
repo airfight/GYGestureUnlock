@@ -75,11 +75,11 @@ class GYCircle: UIView {
         var color: UIColor?
         
         
-        guard (self.state != nil) else {
+        guard let state_ = self.state else {
             return  CircleStateNormalOutsideColor
             
         }
-        switch self.state! {
+        switch state_ {
         case CircleState.circleStateNormal:
             color = CircleStateNormalOutsideColor
             
@@ -104,11 +104,11 @@ class GYCircle: UIView {
         
         var color: UIColor?
         
-        guard (self.state != nil) else {
+        guard let state_ = self.state else {
             return  CircleStateNormalInsideColor
             
         }
-        switch self.state! {
+        switch state_ {
         case CircleState.circleStateNormal:
             color = CircleStateNormalInsideColor
             
@@ -132,11 +132,11 @@ class GYCircle: UIView {
     {
         var color: UIColor?
         
-        guard (self.state != nil) else {
+        guard let state_ = self.state else {
             return  CircleStateNormalTrangleColor
             
         }
-        switch self.state! {
+        switch state_ {
         case CircleState.circleStateNormal:
             color = CircleStateNormalTrangleColor
             
@@ -160,14 +160,8 @@ class GYCircle: UIView {
         super.init(frame: CGRect.zero)
         self.backgroundColor = CircleBackgroundColor
         angle = 0
-        //        self.angle = 5
     }
-    //    
-    //    convenience  init() {
-    //        self.init()
-    //        self.backgroundColor = CircleBackgroundColor
-    //        
-    //    }
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)

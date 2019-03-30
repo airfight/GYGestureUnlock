@@ -88,9 +88,9 @@ class GestureViewController: UIViewController {
     
     func itemWithTile(_ title: NSString,target: AnyObject,action: Selector,tag: NSInteger) -> UIBarButtonItem{
         
-        let button = UIButton(type: UIButtonType.custom)
-        button.setTitle(title as String, for: UIControlState())
-        button.addTarget(target, action: action, for: UIControlEvents.touchUpInside)
+        let button = UIButton(type: UIButton.ButtonType.custom)
+        button.setTitle(title as String, for: UIControl.State())
+        button.addTarget(target, action: action, for: UIControl.Event.touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
         button.tag = tag
         button.contentHorizontalAlignment = .right
@@ -171,33 +171,31 @@ class GestureViewController: UIViewController {
         view.addSubview(imageView)
         
         //管理手势密码
-        let leftBtn = UIButton(type: UIButtonType.custom)
+        let leftBtn = UIButton(type: UIButton.ButtonType.custom)
         
-        creatButton(leftBtn, frame: CGRect(x: CircleViewEdgeMargin + 20, y: kScreenH - 60, width: kScreenW/2, height: 20) , titlr: "管理手势密码", alignment: UIControlContentHorizontalAlignment.left, tag: buttonTag.manager.rawValue)
+        creatButton(leftBtn, frame: CGRect(x: CircleViewEdgeMargin + 20, y: kScreenH - 60, width: kScreenW/2, height: 20) , titlr: "管理手势密码", alignment: UIControl.ContentHorizontalAlignment.left, tag: buttonTag.manager.rawValue)
         
         //登录其它账户
-        let rightBtn = UIButton(type: UIButtonType.custom)
+        let rightBtn = UIButton(type: UIButton.ButtonType.custom)
         
-        creatButton(rightBtn, frame: CGRect(x: kScreenW/2 - CircleViewEdgeMargin - 20, y: kScreenH - 60, width: kScreenW/2, height: 20), titlr: "登录其他账户", alignment: UIControlContentHorizontalAlignment.right, tag: buttonTag.forget.rawValue)
-        
-        
+        creatButton(rightBtn, frame: CGRect(x: kScreenW/2 - CircleViewEdgeMargin - 20, y: kScreenH - 60, width: kScreenW/2, height: 20), titlr: "登录其他账户", alignment: UIControl.ContentHorizontalAlignment.right, tag: buttonTag.forget.rawValue)        
         
     }
     
     //MARK: - 创建Button
-    func creatButton(_ btn: UIButton,frame: CGRect,titlr: NSString,alignment: UIControlContentHorizontalAlignment,tag: NSInteger) {
+    func creatButton(_ btn: UIButton,frame: CGRect,titlr: NSString,alignment: UIControl.ContentHorizontalAlignment,tag: NSInteger) {
         btn.frame = frame
         btn.tag = tag
-        btn.setTitle(titlr as String, for: UIControlState())
-        btn.setTitleColor(UIColor.white, for: UIControlState())
+        btn.setTitle(titlr as String, for: UIControl.State())
+        btn.setTitleColor(UIColor.white, for: UIControl.State())
         btn.contentHorizontalAlignment = alignment
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.addTarget(self, action: #selector(GestureViewController.didClickBtn(_:)), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(GestureViewController.didClickBtn(_:)), for: UIControl.Event.touchUpInside)
         view.addSubview(btn)
         
     }
     
-    func didClickBtn(_ sender:UIButton){
+    @objc func didClickBtn(_ sender:UIButton){
         
         switch sender.tag {
         case buttonTag.rest.rawValue:
