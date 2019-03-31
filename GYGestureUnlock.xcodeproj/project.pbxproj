@@ -178,8 +178,8 @@
 		B7F8D2491D741C5E009EAB59 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B75A874C1D6D479E007004EC /* GestureViewController.swift */,
 				B7F8D24A1D741C79009EAB59 /* GestureVerifyViewController.swift */,
+				B75A874C1D6D479E007004EC /* GestureViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 				TargetAttributes = {
 					B7BF333F1D66D9E2007846A4 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = UZZG6NM74T;
+						DevelopmentTeam = 558S72BJ24;
 						LastSwiftMigration = 1010;
 					};
 					B7BF33531D66D9E3007846A4 = {
@@ -494,6 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 558S72BJ24;
 				INFOPLIST_FILE = GYGestureUnlock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -511,6 +512,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 558S72BJ24;
 				INFOPLIST_FILE = GYGestureUnlock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
