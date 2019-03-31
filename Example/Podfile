@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'GYGestureUnlock_Example' do
+  pod 'GYGestureUnlock', :path => '../'
+
+  target 'GYGestureUnlock_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

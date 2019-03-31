@@ -1,0 +1,16 @@
+PODS:
+  - GYGestureUnlock (0.1.0)
+
+DEPENDENCIES:
+  - GYGestureUnlock (from `../`)
+
+EXTERNAL SOURCES:
+  GYGestureUnlock:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  GYGestureUnlock: ca1fdd2a3b1a747ab3a14d369ebb1aa771e69978
+
+PODFILE CHECKSUM: 114e873e07441ab3865045c64bdf99d66a07ef03
+
+COCOAPODS: 1.5.3

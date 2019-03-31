@@ -1,0 +1,6 @@
+framework module GYGestureUnlock {
+  umbrella header "GYGestureUnlock-umbrella.h"
+
+  export *
+  module * { export * }
+}
