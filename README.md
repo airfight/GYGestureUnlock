@@ -24,6 +24,12 @@ GYGestureUnlock is available through [CocoaPods](https://cocoapods.org). To inst
 it, simply add the following line to your Podfile:
 swift3.0 -> [点击下载](https://github.com/airfight/GYGestureUnlock/archive/0.1.1.zip)
 
+Swift版本 | 安装方式 
+- | :-: | 
+swift3.0 | [点击下载](https://github.com/airfight/GYGestureUnlock/archive/0.1.1.zip) | 
+swift4.0 | pod 'GYGestureUnlock','1.0.0'|
+
+
 ```ruby
 swift4.0 -> pod 'GYGestureUnlock','1.0.0'
 ```
