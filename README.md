@@ -8,7 +8,7 @@
 ***
 Swift版仿支付宝的手势解锁，而且提供方法进行参数修改，能解决项目开发中所有手势解锁的开发
 ## 效果图
-[解锁手势](https://upload-images.jianshu.io/upload_images/2082481-b53c87ae91b7a496.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/744/format/webp)
+![解锁手势](https://upload-images.jianshu.io/upload_images/2082481-b53c87ae91b7a496.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/744/format/webp)
 
 * [源OC版手势解锁](https://github.com/iosdeveloperpanc/PCGestureUnlock)
 
