@@ -40,6 +40,9 @@ swift4.0 | pod 'GYGestureUnlock','1.0.0'|
     [简书](http://www.jianshu.com/p/c2b437faee67)
 
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=airfight/GYGestureUnlock&type=Date)](https://star-history.com/#airfight/GYGestureUnlock&Date)
 ## Author
 
 airfight, 745756619@qq.com
